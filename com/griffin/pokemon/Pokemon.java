@@ -202,6 +202,7 @@ public abstract class Pokemon {
         triggerRounds.remove(index);
     }
 
+    @SuppressWarnings("unused")
     public boolean checkCondition(Conditions condition) {
             for (int i = 0; i < conditions.size(); i++) {
                 if (conditions.get(i) == condition) {
