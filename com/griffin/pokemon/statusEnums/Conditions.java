@@ -1,9 +1,9 @@
 package com.griffin.pokemon.statusEnums;
 
 public enum Conditions {
-    BURN,
+    BURN, //half physical damage
     FREEZE,
-    PARALYSIS,
+    PARALYSIS, //-2 speed
     POISON,
     SLEEP,
     DROWSY,

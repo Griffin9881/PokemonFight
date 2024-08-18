@@ -6,25 +6,39 @@ import java.util.Scanner;
 
 import com.griffin.pokemon.moves.BaseMove;
 import com.griffin.pokemon.statusEnums.Conditions;
-import com.griffin.pokemon.statusEnums.StatStages;
+import com.griffin.pokemon.statusEnums.StatStagesLevels;
 import com.griffin.pokemon.statusEnums.Stats;
+import com.griffin.pokemon.statusEnums.StatusConstants;
 
 public abstract class Pokemon {
+    private ArrayList<Integer> triggerRounds = new ArrayList<Integer>();
+    private ArrayList<Triggers> triggerType = new ArrayList<Triggers>();
     private String name;
     private String type1;
     private String type2;
     private int level;
+    private int baseHpStat;
     private int hpStat;
-    private int currentHP;
+    private int currentHPMod = 1;
+    private int baseAtkStat;
     private int atkStat;
+    private int currentAtkMod = 1;
+    private int baseSpAtkStat;
     private int spAtkStat;
+    private int currentSpAtkMod = 1;
+    private int baseDefStat;
     private int defStat;
+    private int currentDefMod = 1;
+    private int baseSpDefStat;
     private int spDefStat;
+    private int currentSpDefMod = 1;
+    private int baseSpeStat;
     private int speStat;
-    private ArrayList<Conditions> conditions;
-    private ArrayList<String> weaknesses;
-    private ArrayList<String> resistances;
-    private ArrayList<String> immunities;
+    private int currentSpeMod = 1;
+    private ArrayList<Conditions> conditions = new ArrayList<Conditions>();
+    private ArrayList<String> weaknesses = new ArrayList<String>();
+    private ArrayList<String> resistances = new ArrayList<String>();;
+    private ArrayList<String> immunities = new ArrayList<String>();;
     private BaseMove move1;
     private BaseMove move2;
     private BaseMove move3;
@@ -36,6 +50,18 @@ public abstract class Pokemon {
         this.type1 = type1;
         this.type2 = type2.isPresent() ? type2.get() : "Blank";
         this.level = level;
+        this.baseHpStat = hpStat;
+        this.hpStat = this.baseHpStat;
+        this.baseAtkStat = atkStat;
+        this.atkStat = this.baseAtkStat;
+        this.baseDefStat = defStat;
+        this.defStat = this.baseDefStat;
+        this.baseSpAtkStat = spAtkStat;
+        this.spAtkStat = this.baseSpAtkStat;
+        this.baseSpDefStat = spDefStat;
+        this.spDefStat = this.baseSpDefStat;
+        this.baseSpeStat = speStat;
+        this.speStat = this.baseSpeStat;
         this.weaknesses = weaknesses;
         this.resistances = resistances;
         this.immunities = immunities;
@@ -62,21 +88,41 @@ public abstract class Pokemon {
     }
 
     public int getCurrentHP() {
-        return currentHP;
+        return hpStat;
     }
 
     public void maxHP() {
-        currentHP = hpStat;
+        hpStat = baseHpStat;
     }
 
     public void subtractHP(int dmg) {
-        currentHP -= dmg;
+        hpStat -= dmg;
     }
 
     public void HealHp(int heal) {
-        currentHP += heal;
+        hpStat += heal;
     }
 
+    public int getAtkStat() {
+        return atkStat;
+    }
+
+    public int getDefStat() {
+        return defStat;
+    }
+
+    public int getSpAtkStat() {
+        return spAtkStat;
+    }
+
+    public int getSpDefStat() {
+        return spDefStat;
+    }
+
+    public int getSpeStat() {
+        return speStat;
+    }
+    
     public ArrayList<String> getWeaknesses() {
         return weaknesses;
     }
@@ -93,25 +139,31 @@ public abstract class Pokemon {
         return conditions;
     }
 
-    public void effectOnStat(StatStages effect, Stats Stat) {
+    public void effectOnStat(StatStagesLevels level, Stats Stat) {
         switch (Stat) {
             case Stats.HP:
-                hpStat = (int)(hpStat * effect.label);
+                currentHPMod += level.label;
+                hpStat = (int)(baseHpStat * StatusConstants.StatusStages[currentHPMod]);
                 break;
             case Stats.ATK:
-                atkStat = (int)(atkStat * effect.label);
+                currentAtkMod += level.label;
+                atkStat = (int)(baseAtkStat * StatusConstants.StatusStages[currentAtkMod]);
                 break;
             case Stats.DEF:
-                defStat = (int)(defStat * effect.label);
+                currentDefMod += level.label;
+                defStat = (int)(baseDefStat * StatusConstants.StatusStages[currentDefMod]);
                 break;
             case Stats.SP_ATK:
-                spAtkStat = (int)(spAtkStat * effect.label);
+                currentSpAtkMod += level.label;
+                spAtkStat = (int)(baseSpAtkStat * StatusConstants.StatusStages[currentSpAtkMod]);
                 break;
             case Stats.SP_DEF:
-                spDefStat = (int)(spDefStat * effect.label);
+                currentSpDefMod += level.label;
+                spDefStat = (int)(baseSpDefStat * StatusConstants.StatusStages[currentSpDefMod]);
                 break;
             case Stats.SPE:
-                speStat = (int)(speStat * effect.label);
+                currentSpeMod += level.label;
+                speStat = (int)(baseSpeStat * StatusConstants.StatusStages[currentSpeMod]);
                 break;
         }
     }
@@ -120,13 +172,47 @@ public abstract class Pokemon {
         conditions.add(condition);
     }
 
+    public void loseCondition(Conditions condition) {
+        conditions.remove(condition);
+    }
+
     public void gainImmunity(String immunity) {
         immunities.add(immunity);
     }
 
     public void addTrigger(int rounds, Triggers trigger) {
-        
+        triggerRounds.add(rounds);
+        triggerType.add(trigger);
     }
+
+    public void removeTrigger(Triggers trigger) {
+        switch (trigger) {
+            case Triggers.REMOVE_PARALYSIS:
+                loseCondition(Conditions.PARALYSIS);
+                effectOnStat(StatStagesLevels.plus1, Stats.SPE);
+                break;
+            case REMOVE_BURN:
+                loseCondition(Conditions.BURN);
+            default:
+                break;
+        }
+
+        int index = triggerType.indexOf(trigger);
+        triggerType.remove(index);
+        triggerRounds.remove(index);
+    }
+
+    public boolean checkCondition(Conditions condition) {
+            for (int i = 0; i < conditions.size(); i++) {
+                if (conditions.get(i) == condition) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            return false;
+        }
+    
 
     public void learnMove(BaseMove move) {
         //making variables for names of moves and the name of deleted move

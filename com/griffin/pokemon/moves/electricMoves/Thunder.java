@@ -5,7 +5,7 @@ import com.griffin.pokemon.moves.BaseMove;
 import com.griffin.pokemon.moves.MoveType;
 import com.griffin.pokemon.moves.Targets;
 import com.griffin.pokemon.statusEnums.Conditions;
-import com.griffin.pokemon.statusEnums.StatStages;
+import com.griffin.pokemon.statusEnums.StatStagesLevels;
 import com.griffin.pokemon.statusEnums.Stats;
 import com.griffin.pokemon.types.Electric;
 
@@ -23,7 +23,7 @@ public class Thunder extends BaseMove implements Electric {
         super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE);
         if ((int)(Math.random() * 10 + 1) <= 3 && target.getType1() != "Electric" && target.getType2() != "Electric") {
             target.gainCondition(Conditions.PARALYSIS);
-            target.effectOnStat(StatStages.minus2, Stats.SPE);
+            target.effectOnStat(StatStagesLevels.minus2, Stats.SPE);
             System.out.println(target.getName() + " has been Paralyzed! They may not be able to move for the next few turns");
         }
     }
