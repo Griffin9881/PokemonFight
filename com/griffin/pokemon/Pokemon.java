@@ -1,21 +1,27 @@
 package com.griffin.pokemon;
 
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.Scanner;
 
 import com.griffin.pokemon.moves.BaseMove;
+import com.griffin.pokemon.statusEnums.Conditions;
 import com.griffin.pokemon.statusEnums.StatStages;
 import com.griffin.pokemon.statusEnums.Stats;
 
 public abstract class Pokemon {
     private String name;
+    private String type1;
+    private String type2;
     private int level;
     private int hpStat;
+    private int currentHP;
     private int atkStat;
     private int spAtkStat;
     private int defStat;
     private int spDefStat;
     private int speStat;
+    private ArrayList<Conditions> conditions;
     private ArrayList<String> weaknesses;
     private ArrayList<String> resistances;
     private ArrayList<String> immunities;
@@ -24,9 +30,11 @@ public abstract class Pokemon {
     private BaseMove move3;
     private BaseMove move4;
     
-    public Pokemon(String name, int level, ArrayList<String> weaknesses, ArrayList<String> resistances, ArrayList<String> immunities,
+    public Pokemon(String name, String type1, Optional<String> type2, int level, ArrayList<String> weaknesses, ArrayList<String> resistances, ArrayList<String> immunities,
                                     int hpStat, int atkStat, int defStat, int spAtkStat, int spDefStat, int speStat) {
         this.name = name;
+        this.type1 = type1;
+        this.type2 = type2.isPresent() ? type2.get() : "Blank";
         this.level = level;
         this.weaknesses = weaknesses;
         this.resistances = resistances;
@@ -41,8 +49,32 @@ public abstract class Pokemon {
         return name;
     }
 
+    public String getType1() {
+        return type1;
+    }
+
+    public String getType2() {
+        return type2;
+    }
+
     public int getLevel() {
         return level;
+    }
+
+    public int getCurrentHP() {
+        return currentHP;
+    }
+
+    public void maxHP() {
+        currentHP = hpStat;
+    }
+
+    public void subtractHP(int dmg) {
+        currentHP -= dmg;
+    }
+
+    public void HealHp(int heal) {
+        currentHP += heal;
     }
 
     public ArrayList<String> getWeaknesses() {
@@ -55,6 +87,10 @@ public abstract class Pokemon {
 
     public ArrayList<String> getImmunities() {
         return immunities;
+    }
+
+    public ArrayList<Conditions> getConditions() {
+        return conditions;
     }
 
     public void effectOnStat(StatStages effect, Stats Stat) {
@@ -80,8 +116,16 @@ public abstract class Pokemon {
         }
     }
 
+    public void gainCondition(Conditions condition) {
+        conditions.add(condition);
+    }
+
     public void gainImmunity(String immunity) {
         immunities.add(immunity);
+    }
+
+    public void addTrigger(int rounds, Triggers trigger) {
+        
     }
 
     public void learnMove(BaseMove move) {

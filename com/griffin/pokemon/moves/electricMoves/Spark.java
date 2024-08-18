@@ -1,8 +1,12 @@
 package com.griffin.pokemon.moves.electricMoves;
 
+import com.griffin.pokemon.Pokemon;
 import com.griffin.pokemon.moves.BaseMove;
 import com.griffin.pokemon.moves.MoveType;
 import com.griffin.pokemon.moves.Targets;
+import com.griffin.pokemon.statusEnums.Conditions;
+import com.griffin.pokemon.statusEnums.StatStages;
+import com.griffin.pokemon.statusEnums.Stats;
 import com.griffin.pokemon.types.Electric;
 
 public class Spark extends BaseMove implements Electric {
@@ -15,7 +19,12 @@ public class Spark extends BaseMove implements Electric {
     private static final Targets TARGET = Targets.OPPONENT;
     private static final MoveType MOVE_TYPE = MoveType.PHYSICAL;    
 
-    public Spark () {
+    public Spark (Pokemon target) {
         super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE);
+        if ((int)(Math.random() * 10 + 1) <= 3) {
+            target.gainCondition(Conditions.PARALYSIS);
+            target.effectOnStat(StatStages.minus2, Stats.SPE);
+            System.out.println(target.getName() + " has been Paralyzed! They may not be able to move for the next few turns");
+        }
     }
 }

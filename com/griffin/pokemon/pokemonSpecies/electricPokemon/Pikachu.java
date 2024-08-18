@@ -2,11 +2,13 @@ package com.griffin.pokemon.pokemonSpecies.electricPokemon;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Optional;
 
 import com.griffin.pokemon.Pokemon;
 import com.griffin.pokemon.types.Electric;
 
 public class Pikachu extends Pokemon implements Electric {
+    private static String type = "Electric";
     private static int hp = 39;
     private static int atk = 52;
     private static int def = 43;
@@ -19,6 +21,6 @@ public class Pikachu extends Pokemon implements Electric {
 
     
     public Pikachu(String name, int level) {
-        super(name, level, weaknesses, resistances, immunities, (hp + level + 10), atk, def, spAtk, spDef, spe);
+        super(name, type, Optional.empty(), level, weaknesses, resistances, immunities, (hp + level + 10), atk, def, spAtk, spDef, spe);
     }
 }

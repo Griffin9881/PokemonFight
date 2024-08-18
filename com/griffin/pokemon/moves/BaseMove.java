@@ -45,6 +45,10 @@ public abstract class BaseMove {
         return this.target;
     }
 
+    public MoveType getMoveType() {
+        return this.moveType;
+    }
+
     public int execute() {
         Random random = new Random();
         int minPower = basePower - (maxPower - basePower);
