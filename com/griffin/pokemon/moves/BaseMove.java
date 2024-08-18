@@ -8,13 +8,15 @@ public abstract class BaseMove {
     private final int maxPower;
     private final double accuracy;
     private int powerPoint;
+    private Targets target;
 
-    public BaseMove(String name, int basePower, int maxPower, int powerPoint, double accuracy) {
+    public BaseMove(String name, int basePower, int maxPower, int powerPoint, double accuracy, Targets target) {
         this.name = name;
         this.basePower = basePower;
         this.maxPower = maxPower;
         this.powerPoint = powerPoint;
         this.accuracy = accuracy;
+        this.target = target;
     }
 
     public String getName() {
@@ -37,9 +39,14 @@ public abstract class BaseMove {
         return this.accuracy;
     }
 
+    public Targets getTarget() {
+        return this.target;
+    }
+
     public int execute() {
         Random random = new Random();
-        int dmg = random.nextInt(maxPower - basePower) + basePower;
+        int minPower = basePower - (maxPower - basePower);
+        int dmg = random.nextInt(maxPower - minPower) + basePower;
         powerPoint =- 1;
         return dmg;
     }
