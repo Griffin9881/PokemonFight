@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.griffin.pokemon.moves.BaseMove;
+import com.griffin.pokemon.statusEnums.StatStages;
+import com.griffin.pokemon.statusEnums.Stats;
 
 public abstract class Pokemon {
     private String name;
@@ -53,6 +55,29 @@ public abstract class Pokemon {
 
     public ArrayList<String> getImmunities() {
         return immunities;
+    }
+
+    public void effectOnStat(StatStages effect, Stats Stat) {
+        switch (Stat) {
+            case Stats.HP:
+                hpStat = (int)(hpStat * effect.label);
+                break;
+            case Stats.ATK:
+                atkStat = (int)(atkStat * effect.label);
+                break;
+            case Stats.DEF:
+                defStat = (int)(defStat * effect.label);
+                break;
+            case Stats.SP_ATK:
+                spAtkStat = (int)(spAtkStat * effect.label);
+                break;
+            case Stats.SP_DEF:
+                spDefStat = (int)(spDefStat * effect.label);
+                break;
+            case Stats.SPE:
+                speStat = (int)(speStat * effect.label);
+                break;
+        }
     }
 
     public void gainImmunity(String immunity) {

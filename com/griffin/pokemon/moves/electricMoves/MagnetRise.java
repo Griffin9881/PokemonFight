@@ -1,5 +1,6 @@
 package com.griffin.pokemon.moves.electricMoves;
 
+import com.griffin.pokemon.Pokemon;
 import com.griffin.pokemon.moves.BaseMove;
 import com.griffin.pokemon.moves.MoveType;
 import com.griffin.pokemon.moves.Targets;
@@ -15,7 +16,8 @@ public class MagnetRise extends BaseMove implements Electric {
     private static final Targets TARGET = Targets.USER;
     private static final MoveType MOVE_TYPE = MoveType.STATUS;
 
-    public MagnetRise () {
+    public MagnetRise (Pokemon target) {
         super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE);
+        target.gainImmunity("Ground");
     }
 }
