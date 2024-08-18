@@ -8,6 +8,12 @@ import com.griffin.pokemon.moves.BaseMove;
 public abstract class Pokemon {
     private String name;
     private int level;
+    private int hpStat;
+    private int atkStat;
+    private int spAtkStat;
+    private int defStat;
+    private int spDefStat;
+    private int speStat;
     private ArrayList<String> weaknesses;
     private ArrayList<String> resistances;
     private ArrayList<String> immunities;
@@ -16,7 +22,8 @@ public abstract class Pokemon {
     private BaseMove move3;
     private BaseMove move4;
     
-    public Pokemon(String name, int level, ArrayList<String> weaknesses, ArrayList<String> resistances, ArrayList<String> immunities) {
+    public Pokemon(String name, int level, ArrayList<String> weaknesses, ArrayList<String> resistances, ArrayList<String> immunities,
+                                    int hpStat, int atkStat, int defStat, int spAtkStat, int spDefStat, int speStat) {
         this.name = name;
         this.level = level;
         this.weaknesses = weaknesses;
