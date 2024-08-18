@@ -9,14 +9,16 @@ public abstract class BaseMove {
     private final double accuracy;
     private int powerPoint;
     private Targets target;
+    private MoveType moveType;
 
-    public BaseMove(String name, int basePower, int maxPower, int powerPoint, double accuracy, Targets target) {
+    public BaseMove(String name, int basePower, int maxPower, int powerPoint, double accuracy, Targets target, MoveType moveType) {
         this.name = name;
         this.basePower = basePower;
         this.maxPower = maxPower;
         this.powerPoint = powerPoint;
         this.accuracy = accuracy;
         this.target = target;
+        this.moveType = moveType;
     }
 
     public String getName() {
