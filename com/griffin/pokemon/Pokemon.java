@@ -180,6 +180,14 @@ public abstract class Pokemon {
         immunities.add(immunity);
     }
 
+    public void loseImmunity(String immunity) {
+        for (int index = 0; index < immunities.size(); index++) {
+            if (immunities.get(index) == immunity) {
+                immunities.remove(index);
+            }
+        }
+    }
+
     public void addTrigger(int rounds, Triggers trigger) {
         triggerRounds.add(rounds);
         triggerType.add(trigger);
@@ -193,8 +201,9 @@ public abstract class Pokemon {
                 break;
             case REMOVE_BURN:
                 loseCondition(Conditions.BURN);
-            default:
                 break;
+            case LOSE_IMMUNITY_GROUND:
+                loseImmunity("Ground");
         }
 
         int index = triggerType.indexOf(trigger);
