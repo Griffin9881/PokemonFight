@@ -141,27 +141,27 @@ public abstract class Pokemon {
 
     public void effectOnStat(StatStagesLevels level, Stats Stat) {
         switch (Stat) {
-            case Stats.HP:
+            case HP:
                 currentHPMod += level.label;
                 hpStat = (int)(baseHpStat * StatusConstants.StatusStages[currentHPMod]);
                 break;
-            case Stats.ATK:
+            case ATK:
                 currentAtkMod += level.label;
                 atkStat = (int)(baseAtkStat * StatusConstants.StatusStages[currentAtkMod]);
                 break;
-            case Stats.DEF:
+            case DEF:
                 currentDefMod += level.label;
                 defStat = (int)(baseDefStat * StatusConstants.StatusStages[currentDefMod]);
                 break;
-            case Stats.SP_ATK:
+            case SP_ATK:
                 currentSpAtkMod += level.label;
                 spAtkStat = (int)(baseSpAtkStat * StatusConstants.StatusStages[currentSpAtkMod]);
                 break;
-            case Stats.SP_DEF:
+            case SP_DEF:
                 currentSpDefMod += level.label;
                 spDefStat = (int)(baseSpDefStat * StatusConstants.StatusStages[currentSpDefMod]);
                 break;
-            case Stats.SPE:
+            case SPE:
                 currentSpeMod += level.label;
                 speStat = (int)(baseSpeStat * StatusConstants.StatusStages[currentSpeMod]);
                 break;
@@ -195,7 +195,7 @@ public abstract class Pokemon {
 
     public void removeTrigger(Triggers trigger) {
         switch (trigger) {
-            case Triggers.REMOVE_PARALYSIS:
+            case REMOVE_PARALYSIS:
                 loseCondition(Conditions.PARALYSIS);
                 effectOnStat(StatStagesLevels.plus1, Stats.SPE);
                 break;

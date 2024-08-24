@@ -23,10 +23,10 @@ public class Main {
 
         AllPokemonEnum answer = FindThatPokemon(pokemonAnswer);
         switch (answer) {
-            case AllPokemonEnum.CHARMANDER:
+            case CHARMANDER:
                 pokemon1 = new Charmander("Charmander", level);
                 break;
-            case AllPokemonEnum.PIKACHU:
+            case PIKACHU:
                 pokemon1 = new Pikachu("Pikachu", level);
             default:
                 break;
@@ -42,10 +42,10 @@ public class Main {
 
         AllPokemonEnum answer2 = FindThatPokemon(pokemonAnswer2);
         switch (answer2) {
-            case AllPokemonEnum.CHARMANDER:
+            case CHARMANDER:
                 pokemon2 = new Charmander("Charmander", levelAnswer2);
                 break;
-            case AllPokemonEnum.PIKACHU:
+            case PIKACHU:
                 pokemon2 = new Pikachu("Pikachu", levelAnswer2);
             default:
                 break;
@@ -72,9 +72,9 @@ public static AllPokemonEnum trySwitch (String pokemonAnswer) {
         try {
             AllPokemonEnum pokemon = AllPokemonEnum.valueOf(pokemonAnswer.toUpperCase());
             switch (pokemon) {
-                case AllPokemonEnum.CHARMANDER:
+                case CHARMANDER:
                     return AllPokemonEnum.CHARMANDER;
-                case AllPokemonEnum.PIKACHU:
+                case PIKACHU:
                     return AllPokemonEnum.PIKACHU;
                 default:
                     return AllPokemonEnum.FAIL;
