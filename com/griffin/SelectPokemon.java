@@ -9,10 +9,9 @@ import com.griffin.pokemon.pokemonSpecies.electricPokemon.Pikachu;
 import com.griffin.pokemon.pokemonSpecies.firePokemon.Charmander;
 
 public class SelectPokemon {
-    private static Pokemon pokemon1;
-    private static Pokemon pokemon2;
+    private static Pokemon pokemon;
     private static String[] AllPokemonNames = AllPokemon.AllPokemonNames;
-    public SelectPokemon(Scanner scanner, int player) {
+    public static Pokemon PickPokemon(Scanner scanner, int player) {
         if (player == 1) {
             System.out.println("What is the first pokemon?");
             String pokemonAnswer = scanner.nextLine();
@@ -23,16 +22,15 @@ public class SelectPokemon {
             AllPokemonEnum answer = FindThatPokemon(pokemonAnswer, scanner);
             switch (answer) {
                 case CHARMANDER:
-                pokemon1 = new Charmander("Charmander", level);
+                pokemon = new Charmander("Charmander", level);
                 break;
             case PIKACHU:
-                pokemon1 = new Pikachu("Pikachu", level);
+                pokemon = new Pikachu("Pikachu", level);
+                break;
             default:
                 break;
         }
-        }
-        
-
+    } else {
         String pokemonAnswer2 = "";
         int levelAnswer2 = 0;
         System.out.println("What is the other pokemon?");
@@ -44,13 +42,15 @@ public class SelectPokemon {
         AllPokemonEnum answer2 = FindThatPokemon(pokemonAnswer2, scanner);
         switch (answer2) {
             case CHARMANDER:
-                pokemon2 = new Charmander("Charmander", levelAnswer2);
+                pokemon = new Charmander("Charmander", levelAnswer2);
                 break;
             case PIKACHU:
-                pokemon2 = new Pikachu("Pikachu", levelAnswer2);
+                pokemon = new Pikachu("Pikachu", levelAnswer2);
             default:
                 break;
+            }
         }
+        return pokemon;
     }
 
     public static AllPokemonEnum FindThatPokemon(String pokemonAnswer, Scanner scanner) {
