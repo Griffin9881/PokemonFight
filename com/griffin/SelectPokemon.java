@@ -35,7 +35,6 @@ public class SelectPokemon {
         int levelAnswer2 = 0;
         System.out.println("What is the other pokemon?");
         pokemonAnswer2 = scanner.nextLine();
-        System.out.println(pokemonAnswer2);
         System.out.println("What level do you want your pokemon to be?");
         levelAnswer2 = Integer.parseInt(scanner.nextLine());
 

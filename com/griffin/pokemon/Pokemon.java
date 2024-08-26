@@ -147,6 +147,16 @@ public abstract class Pokemon {
         return possibleMoves;
     }
 
+    public String[] getMovesString() {
+        ArrayList<String> allMovesString = new ArrayList<String>();
+        for (int i = 0; i < possibleMoves.length; i++) {
+            allMovesString.add(possibleMoves[i].label);
+        }
+        String[] moves = {};
+        moves = allMovesString.toArray(moves);
+        return moves;
+    }
+
     public void effectOnStat(StatStagesLevels level, Stats Stat) {
         switch (Stat) {
             case HP:
@@ -232,7 +242,7 @@ public abstract class Pokemon {
         }
     
 
-    public void learnMove(BaseMove move, AllMoves enumMove) {
+    public void learnMove(BaseMove move, AllMoves enumMove, Scanner scanner) {
         if (Arrays.asList(possibleMoves).contains(enumMove)) {
             //making variables for names of moves and the name of deleted move
             String newMove = move.getName();
@@ -253,8 +263,6 @@ public abstract class Pokemon {
                 move4 = move;
             } else {
 
-                //makes scanner
-                Scanner scanner = new Scanner(System.in);
                 //if moves are full ask if they want to replace
                 System.out.println("You're moves are full already which move would you like to replace one of your current moves for "
                                                                                                              + newMove + "?");

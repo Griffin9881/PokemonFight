@@ -13,8 +13,8 @@ public class Main {
         pokemon2 = SelectPokemon.PickPokemon(scanner, 2);
         System.out.println(pokemon1.getName());
         System.out.println(pokemon2.getName());
-        scanner.close();
         pokemon1 = SelectMoves.pickMoves(scanner, pokemon1);
         pokemon2 = SelectMoves.pickMoves(scanner, pokemon2);
+        scanner.close();
     }
 }

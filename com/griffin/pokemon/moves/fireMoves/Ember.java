@@ -1,5 +1,6 @@
 package com.griffin.pokemon.moves.fireMoves;
 
+import com.griffin.pokemon.Pokemon;
 import com.griffin.pokemon.moves.BaseMove;
 import com.griffin.pokemon.moves.MoveType;
 import com.griffin.pokemon.moves.Targets;
@@ -15,7 +16,7 @@ public class Ember extends BaseMove implements Fire {
     private static final Targets TARGET = Targets.ALL_POKEMON;
     private static final MoveType MOVE_TYPE = MoveType.SPECIAL;
 
-    public Ember () {
+    public Ember (Pokemon target) {
         super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE);
     }
 }
