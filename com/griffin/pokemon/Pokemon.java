@@ -157,6 +157,22 @@ public abstract class Pokemon {
         return moves;
     }
 
+    public String getMove1() {
+        return move1.label;
+    }
+
+    public String getMove2() {
+        return move2.label;
+    }
+
+    public String getMove3() {
+        return move3.label;
+    }
+
+    public String getMove4() {
+        return move4.label;
+    }
+
     public void effectOnStat(StatStagesLevels level, Stats Stat) {
         switch (Stat) {
             case HP:
@@ -316,7 +332,7 @@ public abstract class Pokemon {
                         }
                     }
             //2nd success message
-            if (deletedMove == "null") {
+            if (deletedMove.equals("null")) {
             System.out.println(name + " has successfully learned " + newMove + "!");
             } else {
             System.out.println("Failed, " + this.getName() + " is not able to learn " + SelectMoves.oneTimeMove(move).getName());
