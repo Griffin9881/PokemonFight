@@ -5,8 +5,8 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.Scanner;
 
+import com.griffin.SelectMoves;
 import com.griffin.pokemon.moves.AllMoves;
-import com.griffin.pokemon.moves.BaseMove;
 import com.griffin.pokemon.statusEnums.Conditions;
 import com.griffin.pokemon.statusEnums.StatStagesLevels;
 import com.griffin.pokemon.statusEnums.Stats;
@@ -41,10 +41,10 @@ public abstract class Pokemon {
     private ArrayList<String> weaknesses = new ArrayList<String>();
     private ArrayList<String> resistances = new ArrayList<String>();;
     private ArrayList<String> immunities = new ArrayList<String>();;
-    private BaseMove move1;
-    private BaseMove move2;
-    private BaseMove move3;
-    private BaseMove move4;
+    private AllMoves move1;
+    private AllMoves move2;
+    private AllMoves move3;
+    private AllMoves move4;
     private AllMoves[] possibleMoves;
     
     public Pokemon(String name, String type1, Optional<String> type2, int level, ArrayList<String> weaknesses, ArrayList<String> resistances, ArrayList<String> immunities,
@@ -242,80 +242,85 @@ public abstract class Pokemon {
         }
     
 
-    public void learnMove(BaseMove move, AllMoves enumMove, Scanner scanner) {
-        if (Arrays.asList(possibleMoves).contains(enumMove)) {
-            //making variables for names of moves and the name of deleted move
-            String newMove = move.getName();
-            String name1 = move1.getName();
-            String name2 = move2.getName();
-            String name3 = move3.getName();
-            String name4 = move4.getName();
+    public void learnMove(AllMoves move, Scanner scanner) {
+        //making variables for names of moves and the name of deleted move
+        String newMove = SelectMoves.oneTimeMove(move).getName();
+            String name1 = "";
+            String name2 = "";
+            String name3 = "";
+            String name4 ="";
             String deletedMove = "null";
-
+        if (Arrays.asList(possibleMoves).contains(move)) {
             //checking for empty move
             if (move1 == null) {
                 move1 = move;
-            } else if(move2 == null) {
-                move2 = move;
-            } else if(move3 == null) {
-                move3 = move;
-            } else if(move4 == null) {
-                move4 = move;
             } else {
-
-                //if moves are full ask if they want to replace
-                System.out.println("You're moves are full already which move would you like to replace one of your current moves for "
-                                                                                                             + newMove + "?");
-                String scan = scanner.nextLine();
-
-                //checking that scan is yes or no
-                while (scan.toLowerCase() != "yes" || scan.toLowerCase() != "no") {
-                    System.out.println("Invalid response, please give a yes or no answer");
-                    scan = scanner.nextLine();
-                }
-
-                //asks which move should be replaced
-                if (scan.toLowerCase() == "yes") {
-                    System.out.println("Your current moves are " + name1 + ", " + name2 + ", " + name3 + ", " + name4);
-                    System.out.println("Would you like to replace the move?");
-                    scan = scanner.nextLine();
-                
-                //checking that scan is one of the moves
-                while (scan.toLowerCase() != name1 || scan.toLowerCase() != name2 || scan.toLowerCase() != name3 || scan.toLowerCase() != name4) {
-                    System.out.println("Invalid response, please write out one of your move names to replace");
-                    System.out.println("Your current moves are " + name1 + ", " + name2 + ", " + name3 + ", " + name4);
-                    scan = scanner.nextLine();
-                }
-
-                //replace old move with new move
-                if (scan == name1) {
-                    deletedMove = name1;
-                    move1 = move;
-                } else if (scan == name2) {
-                    deletedMove = name2;
+                name1 = SelectMoves.oneTimeMove(move1).getName();
+                if(move2 == null) {
                     move2 = move;
-                } else if (scan == name3) {
-                    deletedMove = name3;
-                    move3 = move;
-                } else if (scan == name4) {
-                    deletedMove = name4;
-                    move4 = move;
-                }
+                } else {
+                    name2 = SelectMoves.oneTimeMove(move2).getName();
+                    if(move3 == null) {
+                        move3 = move;
+                    } else {
+                        name3 = SelectMoves.oneTimeMove(move3).getName();
+                    }if(move4 == null) {
+                        move4 = move;
+                    } else {
+                        name4 = SelectMoves.oneTimeMove(move4).getName();
+            
+                        //if moves are full ask if they want to replace
+                        System.out.println("You're moves are full already which move would you like to replace one of your current moves for "
+                                                                                                                    + newMove + "?");
+                        String scan = scanner.nextLine();
 
-                //first success message
-                System.out.println("1... 2... 3... Ta da! " + name + " has forgotten " + deletedMove + " and now knows " + newMove +"!");
-                scanner.close();
+                        //checking that scan is yes or no
+                        while (!scan.toLowerCase().equals("yes") && !scan.toLowerCase().equals("no")) {
+                            System.out.println("Invalid response, please give a yes or no answer");
+                            scan = scanner.nextLine();
+                        }
 
-                }  else if (scan.toLowerCase() == "no") {
-                    System.out.println("Okay, you will not learn " + newMove);
-                }
-            }
+                        //asks which move should be replaced
+                        if (scan.toLowerCase().equals("yes")) {
+                            System.out.println("Your current moves are " + name1 + ", " + name2 + ", " + name3 + ", " + name4);
+                            System.out.println("Would you like to replace the move?");
+                            scan = scanner.nextLine();
+                        //checking that scan is one of the moves
+                            while (scan.toLowerCase() != name1 || scan.toLowerCase() != name2 || scan.toLowerCase() != name3 || scan.toLowerCase() != name4) {
+                                System.out.println("Invalid response, please write out one of your move names to replace");
+                                System.out.println("Your current moves are " + name1 + ", " + name2 + ", " + name3 + ", " + name4);
+                                scan = scanner.nextLine();
+                            }
+
+                        //replace old move with new move
+                        if (scan == name1) {
+                            deletedMove = name1;
+                            move1 = move;
+                        } else if (scan == name2) {
+                            deletedMove = name2;
+                            move2 = move;
+                        } else if (scan == name3) {
+                            deletedMove = name3;
+                            move3 = move;
+                        } else if (scan == name4) {
+                            deletedMove = name4;
+                            move4 = move;
+                        }
+
+                        //first success message
+                        System.out.println("1... 2... 3... Ta da! " + name + " has forgotten " + deletedMove + " and now knows " + newMove +"!");
+                        scanner.close();
+
+                        }  else if (scan.toLowerCase().equals("no")) {
+                            System.out.println("Okay, you will not learn " + newMove);
+                        }
+                    }
             //2nd success message
             if (deletedMove == "null") {
-            System.out.println(name + "has successfully learned " + newMove + "!");
-            }
-        } else {
-            System.out.println("Failed, " + this.getName() + " is not able to learn " + move.getName());
+            System.out.println(name + " has successfully learned " + newMove + "!");
+            } else {
+            System.out.println("Failed, " + this.getName() + " is not able to learn " + SelectMoves.oneTimeMove(move).getName());
+            }}}
         }
-    }   
+    }
 }

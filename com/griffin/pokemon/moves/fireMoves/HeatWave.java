@@ -1,5 +1,6 @@
 package com.griffin.pokemon.moves.fireMoves;
 
+import com.griffin.pokemon.Pokemon;
 import com.griffin.pokemon.moves.BaseMove;
 import com.griffin.pokemon.moves.MoveType;
 import com.griffin.pokemon.moves.Targets;
@@ -14,6 +15,10 @@ public class HeatWave extends BaseMove implements Fire {
     private static final double ACCURACY = 90.00;
     private static final Targets TARGET = Targets.ALL_OPPONENTS;
     private static final MoveType MOVE_TYPE = MoveType.SPECIAL;
+
+    public HeatWave (Pokemon target) {
+        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE);
+    }
 
     public HeatWave () {
         super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE);

@@ -18,7 +18,6 @@ public class SelectMoves {
     public static Pokemon pickMoves(Scanner scanner, Pokemon pokemon) {
         String[] allMovesString = pokemon.getMovesString();
         AllMoves[] allMoves = pokemon.getMoves();
-        AllMoves move;
 
         boolean contains = false;
         int k = 0;
@@ -27,7 +26,7 @@ public class SelectMoves {
         int numMoves = scanner.nextInt();
 
         for (int i = 0; i < numMoves; i++) {
-            System.out.println("Which move would you like to learn first?");
+            System.out.println("Which move would you like to learn?");
 
             for (int j = 0; j < allMovesString.length; j++) {
                 System.out.print(allMovesString[j] + ", ");
@@ -46,14 +45,15 @@ public class SelectMoves {
                 String scan = scanner.nextLine();
 
                 for (int j = 0; j < allMovesString.length; j++) {
-                    if (allMovesString[i].equals(scan)) {
+                    if (allMovesString[i].toLowerCase().equals(scan.toLowerCase())) {
+                        scan = null;
                         contains = true;
-                        move = allMoves[i];
+                        pokemon.learnMove(allMoves[i], scanner);
                         break;
                     }
                 }
             }
-            pokemon.learnMove(null, move, scanner);
+            contains = false;
         }
         return pokemon;
     }
@@ -71,13 +71,36 @@ public class SelectMoves {
             case EMBER:
                 return new Ember(target);
             case FIRE_PUNCH:
+                return new FirePunch(target);
+            case FLAMETHROWER:
+                return new Flamethrower(target);
+            case HEAT_WAVE:
+                return new HeatWave(target);
+            default:
+                return new Electroweb(target);
+        }
+    }
+
+    public static BaseMove oneTimeMove(AllMoves move) {
+        switch (move) {
+            case ELECTROWEB:
+                return new Electroweb();
+            case MAGNET_RISE:
+                return new MagnetRise();
+            case SPARK:
+                return new Spark();
+            case THUNDER:
+                return new Thunder();
+            case EMBER:
+                return new Ember();
+            case FIRE_PUNCH:
                 return new FirePunch();
             case FLAMETHROWER:
                 return new Flamethrower();
             case HEAT_WAVE:
                 return new HeatWave();
             default:
-                return new Electroweb(target);
+                return new Electroweb();
         }
     }
 }

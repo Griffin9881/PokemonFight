@@ -27,4 +27,8 @@ public class Thunder extends BaseMove implements Electric {
             System.out.println(target.getName() + " has been Paralyzed! They may not be able to move for the next few turns");
         }
     }
+
+    public Thunder () {
+        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE);
+    }
 }

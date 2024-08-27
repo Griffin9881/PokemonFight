@@ -22,4 +22,8 @@ public class MagnetRise extends BaseMove implements Electric {
         target.gainImmunity("Ground");
         target.addTrigger(5, Triggers.LOSE_IMMUNITY_GROUND);
     }
+
+    public MagnetRise () {
+        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE);
+    }
 }

@@ -27,4 +27,8 @@ public class Spark extends BaseMove implements Electric {
             System.out.println(target.getName() + " has been Paralyzed! They may not be able to move for the next few turns");
         }
     }
+
+    public Spark () {
+        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE);
+    }
 }
