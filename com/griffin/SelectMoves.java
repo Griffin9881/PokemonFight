@@ -23,6 +23,7 @@ public class SelectMoves {
         int k = 0;
 
         System.out.println("How many moves would you like to learn");
+        
         int numMoves = scanner.nextInt();
 
         for (int i = 0; i < numMoves; i++) {
@@ -34,24 +35,21 @@ public class SelectMoves {
             System.out.println();
 
             while (!contains) {
-                if (k > 0) {
+                if (k > 1) {
                     System.out.println("That is not a valid move please pick a valid move");
-                    for (int j = 0; j < allMovesString.length; j++) {
-                        System.out.print(allMovesString[j] + ", ");
-                    } 
-                    System.out.println();
                 }
-                
                 String scan = scanner.nextLine();
 
                 for (int j = 0; j < allMovesString.length; j++) {
-                    if (allMovesString[i].toLowerCase().equals(scan.toLowerCase())) {
+                    if (allMovesString[j].toLowerCase().equals(scan.toLowerCase())) {
                         scan = null;
                         contains = true;
-                        pokemon.learnMove(allMoves[i], scanner);
+                        pokemon.learnMove(allMoves[j], scanner);
+                        k = 0;
                         break;
                     }
                 }
+                k++;
             }
             contains = false;
         }

@@ -325,18 +325,18 @@ public abstract class Pokemon {
 
                         //first success message
                         System.out.println("1... 2... 3... Ta da! " + name + " has forgotten " + deletedMove + " and now knows " + newMove +"!");
-                        scanner.close();
 
                         }  else if (scan.toLowerCase().equals("no")) {
                             System.out.println("Okay, you will not learn " + newMove);
                         }
-                    }
+                    }}}
+
             //2nd success message
             if (deletedMove.equals("null")) {
             System.out.println(name + " has successfully learned " + newMove + "!");
             } else {
             System.out.println("Failed, " + this.getName() + " is not able to learn " + SelectMoves.oneTimeMove(move).getName());
-            }}}
+            }
         }
     }
 }
