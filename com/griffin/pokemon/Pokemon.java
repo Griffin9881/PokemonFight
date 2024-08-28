@@ -280,10 +280,10 @@ public abstract class Pokemon {
                         move3 = move;
                     } else {
                         name3 = SelectMoves.oneTimeMove(move3).getName();
-                    }if(move4 == null) {
-                        move4 = move;
-                    } else {
-                        name4 = SelectMoves.oneTimeMove(move4).getName();
+                        if(move4 == null) {
+                            move4 = move;
+                        } else {
+                            name4 = SelectMoves.oneTimeMove(move4).getName();
             
                         //if moves are full ask if they want to replace
                         System.out.println("You're moves are full already which move would you like to replace one of your current moves for "
@@ -329,7 +329,7 @@ public abstract class Pokemon {
                         }  else if (scan.toLowerCase().equals("no")) {
                             System.out.println("Okay, you will not learn " + newMove);
                         }
-                    }}}
+                    }}}}
 
             //2nd success message
             if (deletedMove.equals("null")) {

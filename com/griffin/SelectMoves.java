@@ -24,7 +24,7 @@ public class SelectMoves {
         boolean contains = false;
         int k = 0;
 
-        System.out.println("How many moves would you like to learn");
+        System.out.println("How many moves would you like " + pokemon.getName() + " to learn");
         
         boolean foundInt;
         do {

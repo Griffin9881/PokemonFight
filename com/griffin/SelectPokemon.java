@@ -22,12 +22,12 @@ public class SelectPokemon {
         do {
             try {
                 foundInt = false;
-                level = scanner.nextInt(); // sc is an object of scanner class
+                level = scanner.nextInt();
             } catch (InputMismatchException e) {
                 scanner.next();
                 foundInt = true;
             }
-        } while (foundInt == true);
+        } while (foundInt);
 
             AllPokemonEnum answer = FindThatPokemon(pokemonAnswer, scanner);
             switch (answer) {
@@ -44,10 +44,18 @@ public class SelectPokemon {
         String pokemonAnswer2 = "";
         int levelAnswer2 = 0;
         System.out.println("What is the other pokemon?");
-        pokemonAnswer2 = scanner.nextLine();
+        pokemonAnswer2 = scanner.next();
         System.out.println("What level do you want your pokemon to be?");
-        levelAnswer2 = Integer.parseInt(scanner.nextLine());
-
+        boolean foundInt;
+        do {
+            try {
+                foundInt = false;
+                level = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                scanner.next();
+                foundInt = true;
+            }
+        } while (foundInt);
         AllPokemonEnum answer2 = FindThatPokemon(pokemonAnswer2, scanner);
         switch (answer2) {
             case CHARMANDER:
@@ -71,11 +79,12 @@ public class SelectPokemon {
             }
             System.out.println();
 
-            pokemonAnswer = scanner.nextLine();
+            pokemonAnswer = scanner.next();
             answer = trySwitch(pokemonAnswer);
     }
     return answer;
 }
+
 public static AllPokemonEnum trySwitch (String pokemonAnswer) {
         try {
             AllPokemonEnum pokemon = AllPokemonEnum.valueOf(pokemonAnswer.toUpperCase());
