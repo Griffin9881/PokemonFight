@@ -1,5 +1,6 @@
 package com.griffin;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.griffin.pokemon.Pokemon;
@@ -11,13 +12,22 @@ import com.griffin.pokemon.pokemonSpecies.firePokemon.Charmander;
 public class SelectPokemon {
     private static Pokemon pokemon;
     private static String[] AllPokemonNames = AllPokemon.AllPokemonNames;
+    private static int level;
     public static Pokemon PickPokemon(Scanner scanner, int player) {
         if (player == 1) {
             System.out.println("What is the first pokemon?");
             String pokemonAnswer = scanner.nextLine();
             System.out.println("What level do you want your pokemon to be?");
-            String levelAnswer = scanner.nextLine();
-            int level = Integer.parseInt(levelAnswer);
+            boolean foundInt;
+        do {
+            try {
+                foundInt = false;
+                level = scanner.nextInt(); // sc is an object of scanner class
+            } catch (InputMismatchException e) {
+                scanner.next();
+                foundInt = true;
+            }
+        } while (foundInt == true);
 
             AllPokemonEnum answer = FindThatPokemon(pokemonAnswer, scanner);
             switch (answer) {

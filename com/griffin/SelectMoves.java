@@ -1,5 +1,6 @@
 package com.griffin;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.griffin.pokemon.Pokemon;
@@ -18,13 +19,23 @@ public class SelectMoves {
     public static Pokemon pickMoves(Scanner scanner, Pokemon pokemon) {
         String[] allMovesString = pokemon.getMovesString();
         AllMoves[] allMoves = pokemon.getMoves();
+        int numMoves = 0;
 
         boolean contains = false;
         int k = 0;
 
         System.out.println("How many moves would you like to learn");
         
-        int numMoves = scanner.nextInt();
+        boolean foundInt;
+        do {
+            try {
+                foundInt = false;
+                numMoves = scanner.nextInt(); // sc is an object of scanner class
+            } catch (InputMismatchException e) {
+                scanner.next();
+                foundInt = true;
+            }
+        } while (foundInt == true);
 
         for (int i = 0; i < numMoves; i++) {
             System.out.println("Which move would you like to learn?");
