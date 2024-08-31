@@ -158,19 +158,39 @@ public abstract class Pokemon {
     }
 
     public String getMove1() {
-        return move1.label;
+        if(!(move1==null)){
+            return move1.label;
+        }
+        else {
+            return "";
+        }
     }
 
     public String getMove2() {
-        return move2.label;
+        if(!(move3==null)){
+            return move2.label;
+        }
+        else {
+            return "";
+        }    
     }
 
     public String getMove3() {
-        return move3.label;
+        if(!(move3==null)){
+            return move3.label;
+        }
+        else {
+            return "";
+        }
     }
 
     public String getMove4() {
-        return move4.label;
+        if(!(move4==null)){
+            return move4.label;
+        }
+        else {
+            return "";
+        }
     }
 
     public void effectOnStat(StatStagesLevels level, Stats Stat) {
