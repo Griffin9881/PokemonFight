@@ -14,6 +14,7 @@ public class CreateBattle {
         pokemon2 = SelectPokemon.PickPokemon(scanner, 2);
         pokemon1 = SelectMoves.pickMoves(scanner, pokemon1);
         pokemon2 = SelectMoves.pickMoves(scanner, pokemon2);
+        new PokeFight(pokemon1, pokemon2, scanner);
         scanner.close();
     }
 }

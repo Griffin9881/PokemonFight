@@ -30,7 +30,7 @@ public class SelectMoves {
         do {
             try {
                 foundInt = false;
-                numMoves = scanner.nextInt(); // sc is an object of scanner class
+                numMoves = scanner.nextInt(); 
             } catch (InputMismatchException e) {
                 scanner.next();
                 foundInt = true;
