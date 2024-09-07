@@ -5,29 +5,28 @@ import com.griffin.pokemon.Pokemon;
 
 public class PokeFight {
     public int rounds = 0;
+    private String move1 = "";
+    private String move2 = "";
     public PokeFight(Pokemon pokemon1, Pokemon pokemon2, Scanner scanner){ 
-        String move1 = "";
-        String move2 = "";
         while (pokemon1.getCurrentHP() > 0 && pokemon2.getCurrentHP() > 0) {
             rounds ++;
-            
-            do {
-            System.out.println("What move do you want your first pokemon to do?");
-            System.out.println(pokemon1.getMove1() + ", " + pokemon1.getMove2() + ", " + pokemon1.getMove3() + ", " + pokemon1.getMove4());
-            move1 = scanner.next();
-            } while(!move1.toLowerCase().equals(pokemon1.getMove1().toLowerCase()) && 
-                    !move1.toLowerCase().equals(pokemon1.getMove2().toLowerCase()) && 
-                    !move1.toLowerCase().equals(pokemon1.getMove3().toLowerCase()) && 
-                    !move1.toLowerCase().equals(pokemon1.getMove4().toLowerCase()));
-
-            do {
-            System.out.println("What move do you want the other pokemon to do?");
-            System.out.println(pokemon2.getMove1() + ", " + pokemon2.getMove2() + ", " + pokemon2.getMove3() + ", " + pokemon2.getMove4());
-            move2 = scanner.next();
-            } while(!move2.toLowerCase().equals(pokemon2.getMove1().toLowerCase()) && 
-                    !move2.toLowerCase().equals(pokemon2.getMove2().toLowerCase()) && 
-                    !move2.toLowerCase().equals(pokemon2.getMove3().toLowerCase()) && 
-                    !move2.toLowerCase().equals(pokemon2.getMove4().toLowerCase()));
+            move1 = pickMove(pokemon1, scanner);
+            move2 = pickMove(pokemon2, scanner);
+            System.out.println(pokemon1.getName() + " played " + move1);
+            System.out.println(pokemon2.getName() + " played " + move2);
         }
+    }
+
+    private String pickMove(Pokemon pokemon, Scanner scanner) {
+        String move = "";
+        do {
+            System.out.println("What move do you want " + pokemon.getName() +  " to do?");
+            System.out.println(pokemon.getMove1() + ", " + pokemon.getMove2() + ", " + pokemon.getMove3() + ", " + pokemon.getMove4());
+            move = scanner.next();
+            } while(!move.toLowerCase().equals(pokemon.getMove1().toLowerCase()) && 
+                    !move.toLowerCase().equals(pokemon.getMove2().toLowerCase()) && 
+                    !move.toLowerCase().equals(pokemon.getMove3().toLowerCase()) && 
+                    !move.toLowerCase().equals(pokemon.getMove4().toLowerCase()));
+        return move;
     }
 }
