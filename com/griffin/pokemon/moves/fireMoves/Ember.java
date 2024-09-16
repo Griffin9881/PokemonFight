@@ -15,12 +15,13 @@ public class Ember extends BaseMove implements Fire {
     private static final double ACCURACY = 100.00;
     private static final Targets TARGET = Targets.ALL_POKEMON;
     private static final MoveType MOVE_TYPE = MoveType.SPECIAL;
+    private static final int PRIORITY = 0;
 
     public Ember (Pokemon target) {
-        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE);
+        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY);
     }
 
     public Ember () {
-        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE);
+        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY);
     }
 }
