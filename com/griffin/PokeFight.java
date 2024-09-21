@@ -99,8 +99,4 @@ public class PokeFight {
                 return new Struggle();
             }
         }
-
-    private boolean isPriorityMove(BaseMove move) {
-        return false;
-    }
 }
