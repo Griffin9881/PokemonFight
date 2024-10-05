@@ -34,25 +34,7 @@ public class PokeFight {
             baseMove1 = findMove(move1);
             baseMove2 = findMove(move2);
             //figure who goes first
-            if (baseMove1.getPriority() > baseMove2.getPriority()) {
-                pokemonOneFirst = true;
-            } else if (baseMove2.getPriority() > baseMove1.getPriority()) {
-                pokemonOneFirst = false;
-            } else {
-                if (pokemon1.getSpeStat() > pokemon2.getSpeStat()) {
-                    pokemonOneFirst = true;
-                } else if (pokemon2.getSpeStat() > pokemon1.getSpeStat()) {
-                    pokemonOneFirst = false;
-                } else {
-                    pokemonOneFirst = new Random().nextBoolean();
-                }
-            }
-
-                if (pokemonOneFirst) {
-                    System.out.println("ONE");
-                }else {
-                    System.out.println("TWO");  
-            } 
+            figurePriority(pokemon1, baseMove1, pokemon2, baseMove2);
         }
     }
 
@@ -99,4 +81,20 @@ public class PokeFight {
                 return new Struggle();
             }
         }
+
+    private void figurePriority(Pokemon pokemon1, BaseMove move1, Pokemon pokemon2, BaseMove move2) {
+        if (move1.getPriority() > move2.getPriority()) {
+                pokemonOneFirst = true;
+            } else if (move2.getPriority() > move1.getPriority()) {
+                pokemonOneFirst = false;
+            } else {
+                if (pokemon1.getSpeStat() > pokemon2.getSpeStat()) {
+                    pokemonOneFirst = true;
+                } else if (pokemon2.getSpeStat() > pokemon1.getSpeStat()) {
+                    pokemonOneFirst = false;
+                } else {
+                    pokemonOneFirst = new Random().nextBoolean();
+                }
+            }
+    }
 }
