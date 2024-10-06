@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.griffin.pokemon.Pokemon;
 import com.griffin.pokemon.moves.AllMoves;
 import com.griffin.pokemon.moves.BaseMove;
+import com.griffin.pokemon.moves.MoveType;
 import com.griffin.pokemon.moves.Struggle;
 import com.griffin.pokemon.moves.electricMoves.Electroweb;
 import com.griffin.pokemon.moves.electricMoves.MagnetRise;
@@ -22,6 +23,9 @@ public class PokeFight {
     private BaseMove baseMove1 = null;
     private BaseMove baseMove2 = null;
     private boolean pokemonOneFirst = false;
+    private Weather weather = Weather.CLEAR;
+    private FieldStatus fieldStatus = FieldStatus.CLEAR;
+
     public PokeFight(Pokemon pokemon1, Pokemon pokemon2, Scanner scanner){ 
         while (pokemon1.getCurrentHP() > 0 && pokemon2.getCurrentHP() > 0) {
             //pokemon pick their moves
@@ -96,5 +100,51 @@ public class PokeFight {
                     pokemonOneFirst = new Random().nextBoolean();
                 }
             }
+    }
+
+    private void figureDamage(Pokemon pokemon1, Pokemon pokemon2, BaseMove move, MoveType moveType) {
+        int random = (int)Math.random() *100;
+        int critMult = 1;
+        int atk = 1;
+        int def = 1;
+        int power = move.getBasePower();
+        int level = pokemon1.getLevel();
+        int item = 1;
+        double weatherMult = 1;
+        double STABMult = 1;
+        double typeMult = 1;
+
+        if (random <= 4) {
+            critMult = 2;
+        }
+
+        System.out.println(critMult);
+        switch (moveType) {
+            case PHYSICAL:
+                atk = pokemon1.getAtkStat();
+                def = pokemon2.getDefStat();
+                break;
+            case SPECIAL:
+                atk = pokemon1.getSpAtkStat();
+                def = pokemon2.getSpDefStat();
+                break;
+            default: 
+                break;
+        }
+
+        if (pokemon1.getType1().toLowerCase().equals(weather.getEffectiveType().toLowerCase()) ||
+                pokemon1.getType2().toLowerCase().equals(weather.effectiveType.toLowerCase())) {
+            weatherMult = 1.5;
+        } else if (pokemon1.getType1().toLowerCase().equals(weather.getIneffectiveType().toLowerCase()) ||
+                pokemon1.getType2().toLowerCase().equals(weather.ineffectiveType.toLowerCase())) {
+            weatherMult = 0.5;
+        }
+
+        if (move.getType().toLowerCase().equals(pokemon1.getType1().toLowerCase()) ||
+                move.getType().toLowerCase().equals(pokemon1.getType2().toLowerCase())) {
+            typeMult = 1.5;
+        }
+
+        double damage = ((2 * level / 5 + 2) * power * atk / def / 50) * item * critMult * weatherMult * typeMult;
     }
 }
