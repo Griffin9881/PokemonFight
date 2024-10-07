@@ -145,6 +145,6 @@ public class PokeFight {
             typeMult = 1.5;
         }
 
-        double damage = ((2 * level / 5 + 2) * power * atk / def / 50) * item * critMult * weatherMult * typeMult;
+        double damage = ((2 * level / 5 + 2) * power * atk / def / 50) * item * critMult * STABMult * weatherMult * typeMult;
     }
 }

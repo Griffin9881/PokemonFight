@@ -12,8 +12,9 @@ public class Struggle extends BaseMove implements Normal {
     private static final Targets TARGET = Targets.OPPONENT;
     private static final MoveType MOVE_TYPE = MoveType.SPECIAL;
     private static final int PRIORITY = 0;
+    private static final String TYPE= "Normal";
 
     public Struggle () {
-        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY);
+        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY, );
     }
 }
