@@ -284,7 +284,7 @@ public abstract class Pokemon {
             String name1 = "";
             String name2 = "";
             String name3 = "";
-            String name4 ="";
+            String name4 = "";
             String deletedMove = "null";
         if (Arrays.asList(possibleMoves).contains(move)) {
             //checking for empty move
