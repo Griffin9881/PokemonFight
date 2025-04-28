@@ -36,7 +36,7 @@ public class SelectMoves {
                 foundInt = true;
             }
         } while (foundInt == true);
-
+//s.replaceAll("\\s", "");
         for (int i = 0; i < numMoves; i++) {
             System.out.println("Which move would you like to learn?");
 
@@ -49,10 +49,10 @@ public class SelectMoves {
                 if (k > 1) {
                     System.out.println("That is not a valid move please pick a valid move");
                 }
-                String scan = scanner.nextLine();
+                String scan = scanner.nextLine().replaceAll("\\s", "");
 
                 for (int l = 0; l < allMovesString.length; l++) {
-                    if (allMovesString[l].toLowerCase().equals(scan.toLowerCase())) {
+                    if (allMovesString[l].toLowerCase().replaceAll("\\s", "").equals(scan.toLowerCase())) {
                         scan = null;
                         contains = true;
                         pokemon.learnMove(allMoves[l], scanner);
