@@ -40,8 +40,8 @@ public class SelectMoves {
         for (int i = 0; i < numMoves; i++) {
             System.out.println("Which move would you like to learn?");
 
-            for (int j = 0; j < allMovesString.length; j++) {
-                System.out.print(allMovesString[j] + ", ");
+            for (String j: allMovesString) {
+                System.out.print(j + ", ");
             } 
             System.out.println();
 
@@ -51,11 +51,11 @@ public class SelectMoves {
                 }
                 String scan = scanner.nextLine();
 
-                for (int j = 0; j < allMovesString.length; j++) {
-                    if (allMovesString[j].toLowerCase().equals(scan.toLowerCase())) {
+                for (int l = 0; l < allMovesString.length; l++) {
+                    if (allMovesString[l].toLowerCase().equals(scan.toLowerCase())) {
                         scan = null;
                         contains = true;
-                        pokemon.learnMove(allMoves[j], scanner);
+                        pokemon.learnMove(allMoves[l], scanner);
                         k = 0;
                         break;
                     }

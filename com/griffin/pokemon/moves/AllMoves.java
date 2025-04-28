@@ -10,9 +10,9 @@ public enum AllMoves {
     FLAMETHROWER ("Flamethrower"),
     HEAT_WAVE ("Heat Wave");
 
-    public final String label;
+    public final String name;
 
-    private AllMoves(String label) {
-        this.label = label;
+    private AllMoves(String name) {
+        this.name = name;
     }
 }

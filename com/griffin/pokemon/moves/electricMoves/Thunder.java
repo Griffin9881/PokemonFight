@@ -23,7 +23,7 @@ public class Thunder extends BaseMove implements Electric {
     private static final int PRIORITY = 0;
 
     public Thunder (Pokemon target) {
-        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY);
+        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY, "ELECTRIC");
         if ((int)(Math.random() * 10 + 1) <= 3 && target.getType1() != "Electric" && target.getType2() != "Electric") {
             target.gainCondition(Conditions.PARALYSIS);
             target.effectOnStat(StatStagesLevels.minus2, Stats.SPE);
@@ -32,6 +32,6 @@ public class Thunder extends BaseMove implements Electric {
     }
 
     public Thunder () {
-        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY);
+        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY, "ELECTRIC");
     }
 }

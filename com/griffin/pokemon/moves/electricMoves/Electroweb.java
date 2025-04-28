@@ -20,11 +20,11 @@ public class Electroweb extends BaseMove implements Electric {
     private static final MoveType MOVE_TYPE = MoveType.SPECIAL;
 
     public Electroweb (Pokemon target) {
-        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY);
+        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY, "ELECTRIC");
             target.effectOnStat(StatStagesLevels.minus1, Stats.SPE);
     }
 
     public Electroweb() {
-        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY);
+        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY, "ELECTRIC");
     }
 }

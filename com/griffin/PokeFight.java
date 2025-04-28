@@ -57,7 +57,7 @@ public class PokeFight {
 
     private BaseMove findMove(String move) {
         for (AllMoves index : AllMoves.values()) {
-            if (move.equals(index.label.toLowerCase())) {
+            if (move.equals(index.name.toLowerCase())) {
                 return switchMove(index);
             }
         } return new Struggle();
@@ -112,7 +112,9 @@ public class PokeFight {
         int item = 1;
         double weatherMult = 1;
         double STABMult = 1;
-        double typeMult = 1;
+        double typeMult1 = 1;
+        double typeMult2 = 1;
+        double immune = 1;
 
         if (random <= 4) {
             critMult = 2;
@@ -142,9 +144,26 @@ public class PokeFight {
 
         if (move.getType().toLowerCase().equals(pokemon1.getType1().toLowerCase()) ||
                 move.getType().toLowerCase().equals(pokemon1.getType2().toLowerCase())) {
-            typeMult = 1.5;
+            STABMult = 1.5;
+        } 
+
+        for (String i : pokemon2.getWeaknesses()) {
+            if (i.toLowerCase().equals(move.getType().toLowerCase())) {
+                typeMult1 = 2;
+            }
         }
 
-        double damage = ((2 * level / 5 + 2) * power * atk / def / 50) * item * critMult * STABMult * weatherMult * typeMult;
+        for (String i : pokemon2.getResistances()) {
+            if (i.toLowerCase().equals(move.getType().toLowerCase())) {
+                typeMult2 = 0.5;
+            }
+        }
+        
+        for (String i : pokemon2.getImmunities()) {
+            if (i.toLowerCase().equals(move.getType().toLowerCase())) {
+                immune = 0;
+            }
+        }
+        double damage = ((2 * level / 5 + 2) * power * atk / def / 50) * item * critMult * STABMult * weatherMult * typeMult1 * typeMult2 * immune;
     }
 }

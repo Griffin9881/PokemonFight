@@ -15,6 +15,6 @@ public class Struggle extends BaseMove implements Normal {
     private static final String TYPE= "Normal";
 
     public Struggle () {
-        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY, );
+        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY, "NORMAL");
     }
 }

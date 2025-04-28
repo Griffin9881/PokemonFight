@@ -15,9 +15,9 @@ public enum StatStagesLevels {
     minus5(1),
     minus6(0);
 
-    public final int label;
+    public final int name;
 
-    private StatStagesLevels(int label) {
-        this.label = label;
+    private StatStagesLevels(int name) {
+        this.name = name;
     }
 }

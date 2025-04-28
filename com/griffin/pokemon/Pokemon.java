@@ -150,7 +150,7 @@ public abstract class Pokemon {
     public String[] getMovesString() {
         ArrayList<String> allMovesString = new ArrayList<String>();
         for (int i = 0; i < possibleMoves.length; i++) {
-            allMovesString.add(possibleMoves[i].label);
+            allMovesString.add(possibleMoves[i].name);
         }
         String[] moves = {};
         moves = allMovesString.toArray(moves);
@@ -159,7 +159,7 @@ public abstract class Pokemon {
 
     public String getMove1() {
         if(!(move1==null)){
-            return move1.label;
+            return move1.name;
         }
         else {
             return "";
@@ -168,7 +168,7 @@ public abstract class Pokemon {
 
     public String getMove2() {
         if(!(move3==null)){
-            return move2.label;
+            return move2.name;
         }
         else {
             return "";
@@ -177,7 +177,7 @@ public abstract class Pokemon {
 
     public String getMove3() {
         if(!(move3==null)){
-            return move3.label;
+            return move3.name;
         }
         else {
             return "";
@@ -186,7 +186,7 @@ public abstract class Pokemon {
 
     public String getMove4() {
         if(!(move4==null)){
-            return move4.label;
+            return move4.name;
         }
         else {
             return "";
@@ -196,27 +196,27 @@ public abstract class Pokemon {
     public void effectOnStat(StatStagesLevels level, Stats Stat) {
         switch (Stat) {
             case HP:
-                currentHPMod += level.label;
+                currentHPMod += level.name;
                 hpStat = (int)(baseHpStat * StatusConstants.StatusStages[currentHPMod]);
                 break;
             case ATK:
-                currentAtkMod += level.label;
+                currentAtkMod += level.name;
                 atkStat = (int)(baseAtkStat * StatusConstants.StatusStages[currentAtkMod]);
                 break;
             case DEF:
-                currentDefMod += level.label;
+                currentDefMod += level.name;
                 defStat = (int)(baseDefStat * StatusConstants.StatusStages[currentDefMod]);
                 break;
             case SP_ATK:
-                currentSpAtkMod += level.label;
+                currentSpAtkMod += level.name;
                 spAtkStat = (int)(baseSpAtkStat * StatusConstants.StatusStages[currentSpAtkMod]);
                 break;
             case SP_DEF:
-                currentSpDefMod += level.label;
+                currentSpDefMod += level.name;
                 spDefStat = (int)(baseSpDefStat * StatusConstants.StatusStages[currentSpDefMod]);
                 break;
             case SPE:
-                currentSpeMod += level.label;
+                currentSpeMod += level.name;
                 speStat = (int)(baseSpeStat * StatusConstants.StatusStages[currentSpeMod]);
                 break;
         }
@@ -294,6 +294,7 @@ public abstract class Pokemon {
                 name1 = SelectMoves.oneTimeMove(move1).getName();
                 if(move2 == null) {
                     move2 = move;
+                    System.out.println(move2);
                 } else {
                     name2 = SelectMoves.oneTimeMove(move2).getName();
                     if(move3 == null) {
