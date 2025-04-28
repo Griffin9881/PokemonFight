@@ -16,7 +16,7 @@ public class SelectPokemon {
     public static Pokemon PickPokemon(Scanner scanner, int player) {
         if (player == 1) {
             System.out.println("What is the first pokemon?");
-            String pokemonAnswer = scanner.nextLine().replaceAll("\\s", "");
+            String pokemonAnswer = scanner.nextLine();
             System.out.println("What level do you want your pokemon to be?");
             boolean foundInt;
         do {

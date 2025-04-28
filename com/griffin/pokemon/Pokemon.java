@@ -309,24 +309,24 @@ public abstract class Pokemon {
                         //if moves are full ask if they want to replace
                         System.out.println("You're moves are full already which move would you like to replace one of your current moves for "
                                                                                                                     + newMove + "?");
-                        String scan = scanner.nextLine().replaceAll("\\s", "");;
+                        String scan = scanner.nextLine().replaceAll("\\s", "");
 
                         //checking that scan is yes or no
                         while (!scan.toLowerCase().equals("yes") && !scan.toLowerCase().equals("no")) {
                             System.out.println("Invalid response, please give a yes or no answer");
-                            scan = scanner.nextLine().replaceAll("\\s", "");;
+                            scan = scanner.nextLine();
                         }
 
                         //asks which move should be replaced
                         if (scan.toLowerCase().equals("yes")) {
                             System.out.println("Your current moves are " + name1 + ", " + name2 + ", " + name3 + ", " + name4);
                             System.out.println("Would you like to replace the move?");
-                            scan = scanner.nextLine().replaceAll("\\s", "");;
+                            scan = scanner.nextLine();
                         //checking that scan is one of the moves
                             while (scan.toLowerCase() != name1 || scan.toLowerCase() != name2 || scan.toLowerCase() != name3 || scan.toLowerCase() != name4) {
                                 System.out.println("Invalid response, please write out one of your move names to replace");
                                 System.out.println("Your current moves are " + name1 + ", " + name2 + ", " + name3 + ", " + name4);
-                                scan = scanner.nextLine().replaceAll("\\s", "");;
+                                scan = scanner.nextLine().replaceAll("\\s", "");
                             }
 
                         //replace old move with new move
