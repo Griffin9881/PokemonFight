@@ -48,8 +48,10 @@ public class PokeFight {
             System.out.println("What move do you want " + pokemon.getName() +  " to do?");
             System.out.println(pokemon.getMove1() + ", " + pokemon.getMove2() + ", " + pokemon.getMove3() + ", " + pokemon.getMove4());
             System.out.println(pokemon.getMove1().toLowerCase());
-            move = scanner.next().toLowerCase();
-            } while(!move.equals(pokemon.getMove1().toLowerCase()) && 
+            move = scanner.nextLine().toLowerCase().replaceAll("\\s", "");
+            System.out.println(move.toUpperCase());
+            System.out.println(pokemon.getMove1().toLowerCase().replaceAll("\\s", ""));
+            } while(!move.equals(pokemon.getMove1().toLowerCase().replaceAll("\\s", "")) && 
                     !move.equals(pokemon.getMove2().toLowerCase()) && 
                     !move.equals(pokemon.getMove3().toLowerCase()) && 
                     !move.equals(pokemon.getMove4().toLowerCase()));
