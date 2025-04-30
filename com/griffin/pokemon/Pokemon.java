@@ -167,7 +167,7 @@ public abstract class Pokemon {
     }
 
     public String getMove2() {
-        if(!(move3==null)){
+        if(!(move2==null)){
             return move2.name;
         }
         else {
@@ -294,7 +294,6 @@ public abstract class Pokemon {
                 name1 = SelectMoves.oneTimeMove(move1).getName();
                 if(move2 == null) {
                     move2 = move;
-                    System.out.println(move2);
                 } else {
                     name2 = SelectMoves.oneTimeMove(move2).getName();
                     if(move3 == null) {
