@@ -22,6 +22,6 @@ public class Pikachu extends Pokemon implements Electric {
     private static AllMoves[] possibleMoves = {AllMoves.ELECTROWEB, AllMoves.MAGNET_RISE, AllMoves.SPARK, AllMoves.THUNDER};
     
     public Pikachu(String name, int level) {
-        super(name, type, Optional.empty(), level, weaknesses, resistances, immunities, (hp + level + 10), atk, def, spAtk, spDef, spe, possibleMoves);
+        super(name, type, Optional.empty(), level, weaknesses, resistances, immunities, hp, atk, def, spAtk, spDef, spe, possibleMoves);
     }
 }

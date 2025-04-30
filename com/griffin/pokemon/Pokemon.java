@@ -19,6 +19,8 @@ public abstract class Pokemon {
     private String type1;
     private String type2;
     private int level;
+    private int health;
+    private int maxHealth;
     private int baseHpStat;
     private int hpStat;
     private int currentHPMod = 1;
@@ -53,6 +55,8 @@ public abstract class Pokemon {
         this.type1 = type1;
         this.type2 = type2.isPresent() ? type2.get() : "Blank";
         this.level = level;
+        this.maxHealth = (int)Math.floor((0.01 * (2 * hpStat + Math.floor(0.25 * hpStat)) * level) + level + 10);
+        this.health = this.maxHealth;
         this.baseHpStat = hpStat;
         this.hpStat = this.baseHpStat;
         this.baseAtkStat = atkStat;
@@ -92,19 +96,25 @@ public abstract class Pokemon {
     }
 
     public int getCurrentHP() {
-        return hpStat;
+        return health;
     }
 
     public void maxHP() {
-        hpStat = baseHpStat;
+        health = maxHealth;
     }
 
     public void subtractHP(int dmg) {
-        hpStat -= dmg;
+        health -= dmg;
+        if (health < 0) {
+            health = 0;
+        }
     }
 
     public void HealHp(int heal) {
-        hpStat += heal;
+        health += heal;
+        if (health > maxHealth) {
+            health = maxHealth;
+        }
     }
 
     public int getAtkStat() {
@@ -125,6 +135,10 @@ public abstract class Pokemon {
 
     public int getSpeStat() {
         return speStat;
+    }
+
+    public int getHPStat() {
+        return hpStat;
     }
     
     public ArrayList<String> getWeaknesses() {

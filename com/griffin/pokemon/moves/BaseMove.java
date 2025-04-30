@@ -22,6 +22,7 @@ public abstract class BaseMove {
         this.target = target;
         this.moveType = moveType;
         this.priority = priority;
+        this.type = type;
     }
 
     public String getName() {

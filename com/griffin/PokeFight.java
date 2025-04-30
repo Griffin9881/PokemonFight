@@ -5,7 +5,6 @@ import java.util.Scanner;
 import com.griffin.pokemon.Pokemon;
 import com.griffin.pokemon.moves.AllMoves;
 import com.griffin.pokemon.moves.BaseMove;
-import com.griffin.pokemon.moves.MoveType;
 import com.griffin.pokemon.moves.Struggle;
 import com.griffin.pokemon.moves.electricMoves.Electroweb;
 import com.griffin.pokemon.moves.electricMoves.MagnetRise;
@@ -23,6 +22,7 @@ public class PokeFight {
     private BaseMove baseMove1 = null;
     private BaseMove baseMove2 = null;
     private boolean pokemonOneFirst = false;
+    private int damage;
     private Weather weather = Weather.CLEAR;
     private FieldStatus fieldStatus = FieldStatus.CLEAR;
 
@@ -39,6 +39,32 @@ public class PokeFight {
             baseMove2 = findMove(move2);
             //figure who goes first
             figurePriority(pokemon1, baseMove1, pokemon2, baseMove2);
+            if (pokemonOneFirst) {
+                figureDamage(pokemon1, pokemon2, baseMove1);
+                pokemon2.subtractHP(damage);
+                System.out.println(pokemon1.getName() + " has used " + baseMove1.getName() + "! The opposing " + pokemon2.getName() + " is at " + pokemon2.getCurrentHP());
+                if (pokemon2.getCurrentHP() > 0) {
+                    figureDamage(pokemon2, pokemon1, baseMove2);
+                    pokemon1.subtractHP(damage);
+                    System.out.println(pokemon2.getName() + " has used " + baseMove2.getName() + "! The opposing " + pokemon1.getName() + " is at " + pokemon1.getCurrentHP());    
+                }
+
+            } else {
+                figureDamage(pokemon2, pokemon1, baseMove1);
+                pokemon1.subtractHP(damage);
+                System.out.println(pokemon2.getName() + " has used " + baseMove2.getName() + "! The opposing " + pokemon1.getName() + " is at " + pokemon1.getCurrentHP());    
+                if (pokemon1.getCurrentHP() > 0) {
+                    figureDamage(pokemon1, pokemon2, baseMove2);
+                    pokemon2.subtractHP(damage);
+                    System.out.println(pokemon1.getName() + " has used " + baseMove1.getName() + "! The opposing " + pokemon2.getName() + " is at " + pokemon2.getCurrentHP());
+                }
+            }
+
+            if (pokemon1.getCurrentHP() == 0) {
+                System.out.println(pokemon1.getName() + " has fainted. " + pokemon2.getName() + " has won the battle!");
+            } else if (pokemon2.getCurrentHP() == 0) {
+                System.out.println(pokemon2.getName() + " has fainted. " + pokemon1.getName() + " has won the battle!");
+            } 
         }
     }
 
@@ -105,7 +131,7 @@ public class PokeFight {
             }
     }
 
-    private void figureDamage(Pokemon pokemon1, Pokemon pokemon2, BaseMove move, MoveType moveType) {
+    private void figureDamage(Pokemon pokemon1, Pokemon pokemon2, BaseMove move) {
         int random = (int)Math.random() *100;
         int critMult = 1;
         int atk = 1;
@@ -124,7 +150,7 @@ public class PokeFight {
         }
 
         System.out.println(critMult);
-        switch (moveType) {
+        switch (move.getMoveType()) {
             case PHYSICAL:
                 atk = pokemon1.getAtkStat();
                 def = pokemon2.getDefStat();
@@ -167,6 +193,6 @@ public class PokeFight {
                 immune = 0;
             }
         }
-        double damage = ((2 * level / 5 + 2) * power * atk / def / 50) * item * critMult * STABMult * weatherMult * typeMult1 * typeMult2 * immune;
+        damage = (int)(((2 * level / 5 + 2) * power * atk / def / 50) * item * critMult * STABMult * weatherMult * typeMult1 * typeMult2 * immune);
     }
 }
