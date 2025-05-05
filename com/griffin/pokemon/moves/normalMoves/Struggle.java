@@ -1,5 +1,8 @@
-package com.griffin.pokemon.moves;
+package com.griffin.pokemon.moves.normalMoves;
 
+import com.griffin.pokemon.moves.BaseMove;
+import com.griffin.pokemon.moves.MoveType;
+import com.griffin.pokemon.moves.Targets;
 import com.griffin.pokemon.types.Normal;
 
 public class Struggle extends BaseMove implements Normal {
