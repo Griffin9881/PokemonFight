@@ -87,7 +87,7 @@ public class PokeFight {
 
     private BaseMove findMove(String move) {
         for (AllMoves index : AllMoves.values()) {
-            if (move.equals(index.name.toLowerCase())) {
+            if (move.toLowerCase().equals(index.name.toLowerCase())) {
                 return switchMove(index);
             }
         } return new Struggle();
