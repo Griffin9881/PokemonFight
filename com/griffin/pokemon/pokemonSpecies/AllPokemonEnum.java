@@ -3,7 +3,8 @@ package com.griffin.pokemon.pokemonSpecies;
 public enum AllPokemonEnum {
     FAIL("FAIL"),
     CHARMANDER("CHARMANDER"),
-    PIKACHU("PIKACHU");
+    PIKACHU("PIKACHU"),
+    BULBASAUR("BULBASAUR");
 
     public final String label;
 
