@@ -17,8 +17,8 @@ public class Pikachu extends Pokemon implements Electric {
     private static int spDef = 50;
     private static int spe = 65;
     private static ArrayList<String> weaknesses = new ArrayList<>(Arrays.asList(Electric.weaknesses));
-    private static ArrayList<String> resistances = new ArrayList<>(Arrays.asList(Electric.weaknesses));
-    private static ArrayList<String> immunities = new ArrayList<>(Arrays.asList(Electric.weaknesses));
+    private static ArrayList<String> resistances = new ArrayList<>(Arrays.asList(Electric.Resistances));
+    private static ArrayList<String> immunities = new ArrayList<>(Arrays.asList(Electric.Immunities));
     private static AllMoves[] possibleMoves = {AllMoves.ELECTROWEB, AllMoves.MAGNET_RISE, AllMoves.SPARK, AllMoves.THUNDER};
     
     public Pikachu(String name, int level) {

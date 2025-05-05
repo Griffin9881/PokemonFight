@@ -65,6 +65,8 @@ public class PokeFight {
             } else if (pokemon2.getCurrentHP() == 0) {
                 System.out.println(pokemon2.getName() + " has fainted. " + pokemon1.getName() + " has won the battle!");
             } 
+            System.out.println(pokemon1.getImmunities());
+            System.out.println(pokemon2.getImmunities());
         }
     }
 

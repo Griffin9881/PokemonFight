@@ -17,8 +17,8 @@ public class Charmander extends Pokemon implements Fire {
     private static int spDef = 50;
     private static int spe = 90;
     private static ArrayList<String> weaknesses = new ArrayList<>(Arrays.asList(Fire.weaknesses));
-    private static ArrayList<String> resistances = new ArrayList<>(Arrays.asList(Fire.weaknesses));
-    private static ArrayList<String> immunities = new ArrayList<>(Arrays.asList(Fire.weaknesses));
+    private static ArrayList<String> resistances = new ArrayList<>(Arrays.asList(Fire.Resistances));
+    private static ArrayList<String> immunities = new ArrayList<>(Arrays.asList(Fire.Immunities));
     private static AllMoves[] possibleMoves = {AllMoves.EMBER, AllMoves.FIRE_PUNCH, AllMoves.FLAMETHROWER, AllMoves.HEAT_WAVE};
     
     public Charmander(String name, int level) {
