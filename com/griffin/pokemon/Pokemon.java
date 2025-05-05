@@ -115,6 +115,7 @@ public abstract class Pokemon {
     }
 
     public void maxHP() {
+        maxHealth = (int)Math.floor((0.01 * (2 * hpStat + Math.floor(0.25 * hpStat)) * level) + level + 10);
         health = maxHealth;
     }
 
@@ -126,6 +127,7 @@ public abstract class Pokemon {
     }
 
     public void HealHp(int heal) {
+        maxHealth = (int)Math.floor((0.01 * (2 * hpStat + Math.floor(0.25 * hpStat)) * level) + level + 10);
         health += heal;
         if (health > maxHealth) {
             health = maxHealth;
@@ -144,7 +146,7 @@ public abstract class Pokemon {
 
     public int getSpAtkStat() {
         this.spAttack = (int)Math.floor(0.01*(2*spAtkStat*Math.floor(0.25))*level)+5;
-        return speed;
+        return spAttack;
     }
 
     public int getSpDefStat() {
