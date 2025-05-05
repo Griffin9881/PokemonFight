@@ -31,6 +31,9 @@ public class SelectMoves {
             try {
                 foundInt = false;
                 numMoves = scanner.nextInt(); 
+                if (numMoves < 1) {
+                    numMoves = 1;
+                }
             } catch (InputMismatchException e) {
                 scanner.next();
                 foundInt = true;

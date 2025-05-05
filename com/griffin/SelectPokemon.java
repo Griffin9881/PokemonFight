@@ -17,28 +17,31 @@ public class SelectPokemon {
         if (player == 1) {
             System.out.println("What is the first pokemon?");
             String pokemonAnswer = scanner.nextLine();
+            AllPokemonEnum answer = FindThatPokemon(pokemonAnswer, scanner);
             System.out.println("What level do you want your pokemon to be?");
             boolean foundInt;
         do {
             try {
                 foundInt = false;
                 level = scanner.nextInt();
+                if (level < 1) {
+                    level = 1;
+                }
             } catch (InputMismatchException e) {
                 scanner.next();
                 foundInt = true;
             }
         } while (foundInt);
 
-            AllPokemonEnum answer = FindThatPokemon(pokemonAnswer, scanner);
             switch (answer) {
                 case CHARMANDER:
-                pokemon = new Charmander("Charmander", level);
-                break;
-            case PIKACHU:
-                pokemon = new Pikachu("Pikachu", level);
-                break;
-            default:
-                break;
+                    pokemon = new Charmander("Charmander", level);
+                    break;
+                case PIKACHU:
+                    pokemon = new Pikachu("Pikachu", level);
+                    break;
+                default:
+                    break;
         }
     } else {
         String pokemonAnswer2 = "";
