@@ -61,6 +61,11 @@ public abstract class Pokemon {
         this.type2 = type2.isPresent() ? type2.get() : "Blank";
         this.level = level;
         this.maxHealth = (int)Math.floor((0.01 * (2 * hpStat + Math.floor(0.25 * hpStat)) * level) + level + 10);
+        this.attack = (int)Math.floor(0.01*(2*atkStat*Math.floor(0.25))*level)+5;
+        this.defense = (int)Math.floor(0.01*(2*defStat*Math.floor(0.25))*level)+5;
+        this.spAttack = (int)Math.floor(0.01*(2*spAtkStat*Math.floor(0.25))*level)+5;
+        this.spDefense = (int)Math.floor(0.01*(2*spDefStat*Math.floor(0.25))*level)+5;
+        this.speed = (int)Math.floor(0.01*(2*speStat*Math.floor(0.25))*level)+5;
         this.attack = 0;
         this.spAttack = 0;
         this.defense = 0; 
@@ -128,27 +133,28 @@ public abstract class Pokemon {
     }
 
     public int getAtkStat() {
-        return atkStat;
+        this.attack = (int)Math.floor(0.01*(2*atkStat*Math.floor(0.25))*level)+5;
+        return attack;
     }
 
     public int getDefStat() {
-        return defStat;
+        this.defense = (int)Math.floor(0.01*(2*defStat*Math.floor(0.25))*level)+5;
+        return defense;
     }
 
     public int getSpAtkStat() {
-        return spAtkStat;
+        this.spAttack = (int)Math.floor(0.01*(2*spAtkStat*Math.floor(0.25))*level)+5;
+        return speed;
     }
 
     public int getSpDefStat() {
-        return spDefStat;
+        this.spDefense = (int)Math.floor(0.01*(2*spDefStat*Math.floor(0.25))*level)+5;
+        return spDefense;
     }
 
     public int getSpeStat() {
-        return speStat;
-    }
-
-    public int getHPStat() {
-        return hpStat;
+        this.speed = (int)Math.floor(0.01*(2*speStat*Math.floor(0.25))*level)+5;
+        return speed;
     }
     
     public ArrayList<String> getWeaknesses() {
