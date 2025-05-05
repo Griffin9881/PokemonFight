@@ -177,6 +177,12 @@ public abstract class Pokemon {
         return possibleMoves;
     }
 
+    // public AllMoves[] getCurrentMoves() { 
+    //     AllMoves[] currentMoves;
+    //     if (move4 != null) {
+    //     }
+    // }
+
     public String[] getMovesString() {
         ArrayList<String> allMovesString = new ArrayList<String>();
         for (int i = 0; i < possibleMoves.length; i++) {
