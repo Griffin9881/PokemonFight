@@ -20,11 +20,15 @@ public class MagnetRise extends BaseMove implements Electric {
 
     public MagnetRise (Pokemon target) {
         super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY, "ELECTRIC");
-        target.gainImmunity("Ground");
-        target.addTrigger(5, Triggers.LOSE_IMMUNITY_GROUND);
     }
 
     public MagnetRise () {
         super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY, "ELECTRIC");
+    }
+    
+    @Override
+    public void activate(Pokemon target) {
+        target.gainImmunity("Ground");
+        target.addTrigger(5, Triggers.LOSE_IMMUNITY_GROUND);
     }
 }

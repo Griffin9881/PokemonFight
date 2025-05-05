@@ -261,6 +261,7 @@ public abstract class Pokemon {
     }
 
     public void gainImmunity(String immunity) {
+        System.out.println(immunity);
         immunities.add(immunity);
     }
 

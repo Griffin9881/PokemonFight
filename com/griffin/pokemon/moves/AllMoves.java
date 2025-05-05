@@ -2,11 +2,11 @@ package com.griffin.pokemon.moves;
 
 public enum AllMoves {
     ELECTROWEB ("Electroweb"),
-    MAGNET_RISE ("Magnet Rise"),
+    MAGNET_RISE ("MagnetRise"),
     SPARK ("Spark"),
     THUNDER ("Thunder"),
     EMBER ("Ember"),
-    FIRE_PUNCH ("Fire Punch"),
+    FIRE_PUNCH ("FirePunch"),
     FLAMETHROWER ("Flamethrower"),
     HEAT_WAVE ("Heat Wave");
 

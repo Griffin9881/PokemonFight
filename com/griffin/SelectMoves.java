@@ -36,7 +36,7 @@ public class SelectMoves {
                 foundInt = true;
             }
         } while (foundInt == true);
-//s.replaceAll("\\s", "");
+
         for (int i = 0; i < numMoves; i++) {
             System.out.println("Which move would you like to learn?");
 

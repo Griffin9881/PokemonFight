@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.griffin.pokemon.Pokemon;
 import com.griffin.pokemon.moves.AllMoves;
 import com.griffin.pokemon.moves.BaseMove;
+import com.griffin.pokemon.moves.Targets;
 import com.griffin.pokemon.moves.electricMoves.Electroweb;
 import com.griffin.pokemon.moves.electricMoves.MagnetRise;
 import com.griffin.pokemon.moves.electricMoves.Spark;
@@ -65,8 +66,6 @@ public class PokeFight {
             } else if (pokemon2.getCurrentHP() == 0) {
                 System.out.println(pokemon2.getName() + " has fainted. " + pokemon1.getName() + " has won the battle!");
             } 
-            System.out.println(pokemon1.getImmunities());
-            System.out.println(pokemon2.getImmunities());
         }
     }
 
@@ -196,5 +195,11 @@ public class PokeFight {
             }
         }
         damage = (int)(((2 * level / 5 + 2) * power * atk / def / 50) * item * critMult * STABMult * weatherMult * typeMult1 * typeMult2 * immune);
+
+        if (move.getTarget() == Targets.OPPONENT) {
+            move.activate(pokemon2);
+        } else if(move.getTarget() == Targets.USER) {
+            move.activate(pokemon1);
+        }
     }
 }

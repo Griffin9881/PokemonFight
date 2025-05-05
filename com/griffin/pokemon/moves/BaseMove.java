@@ -2,6 +2,8 @@ package com.griffin.pokemon.moves;
 
 import java.util.Random;
 
+import com.griffin.pokemon.Pokemon;
+
 public abstract class BaseMove {
     private String name;
     private final int basePower;
@@ -59,6 +61,9 @@ public abstract class BaseMove {
 
     public String getType() {
         return this.type;
+    }
+    
+    public void activate(Pokemon target) {
     }
 
     public int execute() {
