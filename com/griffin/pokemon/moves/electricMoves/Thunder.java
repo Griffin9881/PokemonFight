@@ -1,7 +1,5 @@
 package com.griffin.pokemon.moves.electricMoves;
 
-import java.util.PrimitiveIterator;
-
 import com.griffin.pokemon.Pokemon;
 import com.griffin.pokemon.moves.BaseMove;
 import com.griffin.pokemon.moves.MoveType;
