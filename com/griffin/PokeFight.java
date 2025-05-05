@@ -130,6 +130,9 @@ public class PokeFight {
                     pokemonOneFirst = new Random().nextBoolean();
                 }
             }
+            if (fieldStatus == FieldStatus.TRICK_ROOM) {
+                pokemonOneFirst = !pokemonOneFirst;
+            }
     }
 
     private void figureDamage(Pokemon pokemon1, Pokemon pokemon2, BaseMove move) {
