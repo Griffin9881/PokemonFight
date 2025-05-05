@@ -2,6 +2,7 @@ package com.griffin.pokemon;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -179,11 +180,21 @@ public abstract class Pokemon {
         return possibleMoves;
     }
 
-    // public AllMoves[] getCurrentMoves() { 
-    //     AllMoves[] currentMoves;
-    //     if (move4 != null) {
-    //     }
-    // }
+    public ArrayList<AllMoves> getCurrentMoves() { 
+        ArrayList<AllMoves> currentMoves = new ArrayList<>();
+        
+        currentMoves.add(move1);
+        if (move2 != null) {
+            currentMoves.add(move2);
+            if (move3 != null) {
+                currentMoves.add(move3);
+                if (move4 != null) {
+                    currentMoves.add(move4);
+                }
+            }
+        }
+        return currentMoves;
+    }
 
     public String[] getMovesString() {
         ArrayList<String> allMovesString = new ArrayList<String>();

@@ -73,13 +73,10 @@ public class PokeFight {
         String move = "";
         do {
             System.out.println("What move do you want " + pokemon.getName() +  " to do?");
-            // for (AllMoves j: pokemon.getMoves()) {
-            //     System.out.print(j.name + ", ");
-            // } 
-            System.out.println(pokemon.getMove1().toLowerCase());
+            for (AllMoves j: pokemon.getCurrentMoves()) {
+                System.out.print(j.name + ", ");
+            } 
             move = scanner.nextLine().toLowerCase().replaceAll("\\s", "");
-            System.out.println(move.toUpperCase());
-            System.out.println(pokemon.getMove1().toLowerCase().replaceAll("\\s", ""));
             } while(!move.equals(pokemon.getMove1().toLowerCase().replaceAll("\\s", "")) && 
                     !move.equals(pokemon.getMove2().toLowerCase()) && 
                     !move.equals(pokemon.getMove3().toLowerCase()) && 
