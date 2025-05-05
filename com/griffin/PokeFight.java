@@ -5,7 +5,6 @@ import java.util.Scanner;
 import com.griffin.pokemon.Pokemon;
 import com.griffin.pokemon.moves.AllMoves;
 import com.griffin.pokemon.moves.BaseMove;
-import com.griffin.pokemon.moves.Struggle;
 import com.griffin.pokemon.moves.electricMoves.Electroweb;
 import com.griffin.pokemon.moves.electricMoves.MagnetRise;
 import com.griffin.pokemon.moves.electricMoves.Spark;
@@ -14,6 +13,7 @@ import com.griffin.pokemon.moves.fireMoves.Ember;
 import com.griffin.pokemon.moves.fireMoves.FirePunch;
 import com.griffin.pokemon.moves.fireMoves.Flamethrower;
 import com.griffin.pokemon.moves.fireMoves.HeatWave;
+import com.griffin.pokemon.moves.normalMoves.Struggle;
 
 public class PokeFight {
     public int rounds = 0;
