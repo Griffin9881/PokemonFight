@@ -26,6 +26,8 @@ public class SelectPokemon {
                 level = scanner.nextInt();
                 if (level < 1) {
                     level = 1;
+                } else if(level > 100) {
+                    level = 100;
                 }
             } catch (InputMismatchException e) {
                 scanner.next();

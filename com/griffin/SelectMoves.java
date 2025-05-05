@@ -33,6 +33,8 @@ public class SelectMoves {
                 numMoves = scanner.nextInt(); 
                 if (numMoves < 1) {
                     numMoves = 1;
+                } else if (numMoves > 4) {
+                    numMoves = 4;
                 }
             } catch (InputMismatchException e) {
                 scanner.next();
