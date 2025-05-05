@@ -76,6 +76,7 @@ public class PokeFight {
             for (AllMoves j: pokemon.getCurrentMoves()) {
                 System.out.print(j.name + ", ");
             } 
+            System.out.println();
             move = scanner.nextLine().toLowerCase().replaceAll("\\s", "");
             } while(!move.equals(pokemon.getMove1().toLowerCase().replaceAll("\\s", "")) && 
                     !move.equals(pokemon.getMove2().toLowerCase()) && 
