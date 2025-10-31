@@ -110,6 +110,10 @@ public abstract class Pokemon {
         return level;
     }
 
+    public int getMaxHP() {
+        return maxHealth;
+    }
+
     public int getCurrentHP() {
         return health;
     }

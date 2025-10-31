@@ -9,7 +9,7 @@ import com.griffin.pokemon.types.Electric;
 
 public class MagnetRise extends BaseMove implements Electric {
     //gives user immunity to ground
-    private static final String NAME = "MagnetRise";
+    private static final String NAME = "Magnet Rise";
     private static final int BASE_POWER = 0;
     private static final int MAX_POWER = 0;
     private static final int POWER_POINT = 13;

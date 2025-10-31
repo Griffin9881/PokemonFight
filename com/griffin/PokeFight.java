@@ -43,21 +43,21 @@ public class PokeFight {
             if (pokemonOneFirst) {
                 figureDamage(pokemon1, pokemon2, baseMove1);
                 pokemon2.subtractHP(damage);
-                System.out.println(pokemon1.getName() + " has used " + baseMove1.getName() + "! The opposing " + pokemon2.getName() + " is at " + pokemon2.getCurrentHP());
+                System.out.println(pokemon1.getName() + " has used " + baseMove1.getName() + "! The opposing " + pokemon2.getName() + " is at " + pokemon2.getCurrentHP() + " out of " + pokemon2.getMaxHP());
                 if (pokemon2.getCurrentHP() > 0) {
                     figureDamage(pokemon2, pokemon1, baseMove2);
                     pokemon1.subtractHP(damage);
-                    System.out.println(pokemon2.getName() + " has used " + baseMove2.getName() + "! The opposing " + pokemon1.getName() + " is at " + pokemon1.getCurrentHP());    
+                    System.out.println(pokemon2.getName() + " has used " + baseMove2.getName() + "! The opposing " + pokemon1.getName() + " is at " + pokemon1.getCurrentHP() + " out of " + pokemon1.getMaxHP());    
                 }
 
             } else {
                 figureDamage(pokemon2, pokemon1, baseMove1);
                 pokemon1.subtractHP(damage);
-                System.out.println(pokemon2.getName() + " has used " + baseMove2.getName() + "! The opposing " + pokemon1.getName() + " is at " + pokemon1.getCurrentHP());    
+                System.out.println(pokemon2.getName() + " has used " + baseMove2.getName() + "! The opposing " + pokemon1.getName() + " is at " + pokemon1.getCurrentHP()+ " out of " + pokemon1.getMaxHP());    
                 if (pokemon1.getCurrentHP() > 0) {
                     figureDamage(pokemon1, pokemon2, baseMove2);
                     pokemon2.subtractHP(damage);
-                    System.out.println(pokemon1.getName() + " has used " + baseMove1.getName() + "! The opposing " + pokemon2.getName() + " is at " + pokemon2.getCurrentHP());
+                    System.out.println(pokemon1.getName() + " has used " + baseMove1.getName() + "! The opposing " + pokemon2.getName() + " is at " + pokemon2.getCurrentHP()+ " out of " + pokemon2.getMaxHP());
                 }
             }
 
@@ -79,15 +79,15 @@ public class PokeFight {
             System.out.println();
             move = scanner.nextLine().toLowerCase().replaceAll("\\s", "");
             } while(!move.equals(pokemon.getMove1().toLowerCase().replaceAll("\\s", "")) && 
-                    !move.equals(pokemon.getMove2().toLowerCase()) && 
-                    !move.equals(pokemon.getMove3().toLowerCase()) && 
-                    !move.equals(pokemon.getMove4().toLowerCase()));
+                    !move.equals(pokemon.getMove2().toLowerCase().replaceAll("\\s", "")) && 
+                    !move.equals(pokemon.getMove3().toLowerCase().replaceAll("\\s", "")) && 
+                    !move.equals(pokemon.getMove4().toLowerCase().replaceAll("\\s", "")));
         return move;
     }
 
     private BaseMove findMove(String move) {
         for (AllMoves index : AllMoves.values()) {
-            if (move.toLowerCase().equals(index.name.toLowerCase())) {
+            if (move.toLowerCase().replaceAll("\\s", "").equals(index.name.toLowerCase().replaceAll("\\s", ""))) {
                 return switchMove(index);
             }
         } return new Struggle();

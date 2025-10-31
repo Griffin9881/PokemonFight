@@ -8,7 +8,7 @@ import com.griffin.pokemon.types.Fire;
 
 public class FirePunch extends BaseMove implements Fire {
     
-    private static final String NAME = "FirePunch";
+    private static final String NAME = "Fire Punch";
     private static final int BASE_POWER = 75;
     private static final int MAX_POWER = 90;
     private static final int POWER_POINT = 15;
