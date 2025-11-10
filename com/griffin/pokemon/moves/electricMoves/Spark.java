@@ -21,7 +21,7 @@ public class Spark extends BaseMove implements Electric {
     private static final int PRIORITY = 0;   
 
     public Spark (Pokemon target) {
-        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY, "ELECTRIC");
+        super(NAME, BASE_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY, "ELECTRIC");
         if ((int)(Math.random() * 10 + 1) <= 3) {
             target.gainCondition(Conditions.PARALYSIS);
             target.effectOnStat(StatStagesLevels.minus2, Stats.SPE);
@@ -30,6 +30,6 @@ public class Spark extends BaseMove implements Electric {
     }
 
     public Spark () {
-        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY, "ELECTRIC");
+        super(NAME, BASE_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY, "ELECTRIC");
     }
 }

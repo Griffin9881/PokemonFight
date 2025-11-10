@@ -19,11 +19,11 @@ public class MagnetRise extends BaseMove implements Electric {
     private static final int PRIORITY = 0;
 
     public MagnetRise (Pokemon target) {
-        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY, "ELECTRIC");
+        super(NAME, BASE_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY, "ELECTRIC");
     }
 
     public MagnetRise () {
-        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY, "ELECTRIC");
+        super(NAME, BASE_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY, "ELECTRIC");
     }
     
     @Override

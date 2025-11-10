@@ -7,7 +7,6 @@ import com.griffin.pokemon.Pokemon;
 public abstract class BaseMove {
     private String name;
     private final int basePower;
-    private final int maxPower;
     private final double accuracy;
     private int powerPoint;
     private Targets target;
@@ -15,10 +14,9 @@ public abstract class BaseMove {
     private int priority;
     private String type;
 
-    public BaseMove(String name, int basePower, int maxPower, int powerPoint, double accuracy, Targets target, MoveType moveType, int priority, String type) {
+    public BaseMove(String name, int basePower, int powerPoint, double accuracy, Targets target, MoveType moveType, int priority, String type) {
         this.name = name;
         this.basePower = basePower;
-        this.maxPower = maxPower;
         this.powerPoint = powerPoint;
         this.accuracy = accuracy;
         this.target = target;
@@ -33,10 +31,6 @@ public abstract class BaseMove {
 
     public int getBasePower() {
         return this.basePower;
-    }
-
-    public int getMaxPower() {
-        return this.maxPower;
     }
 
     public int getPowerPoint() {
@@ -67,9 +61,7 @@ public abstract class BaseMove {
     }
 
     public int execute() {
-        Random random = new Random();
-        int minPower = basePower - (maxPower - basePower);
-        int dmg = random.nextInt(maxPower - minPower) + basePower;
+        int dmg = basePower;
         powerPoint =- 1;
         return dmg;
     }

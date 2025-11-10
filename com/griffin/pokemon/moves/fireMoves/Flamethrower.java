@@ -18,10 +18,10 @@ public class Flamethrower extends BaseMove implements Fire {
     private static final int PRIORITY = 0;
 
     public Flamethrower (Pokemon target) {
-        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY, "FIRE");
+        super(NAME, BASE_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY, "FIRE");
     }
 
     public Flamethrower () {
-        super(NAME, BASE_POWER, MAX_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY, "FIRE");
+        super(NAME, BASE_POWER, POWER_POINT, ACCURACY, TARGET, MOVE_TYPE, PRIORITY, "FIRE");
     }
 }
