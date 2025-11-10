@@ -9,7 +9,6 @@ public class Struggle extends BaseMove implements Normal {
     
     private static final String NAME = "Struggle";
     private static final int BASE_POWER = 50;
-    private static final int MAX_POWER = 55;
     private static final int POWER_POINT = 1000;
     private static final double ACCURACY = 100;
     private static final Targets TARGET = Targets.OPPONENT;
