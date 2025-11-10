@@ -33,11 +33,12 @@ public class PokeFight {
             rounds ++;
             move1 = pickMove(pokemon1, scanner);
             move2 = pickMove(pokemon2, scanner);
-            System.out.println(pokemon1.getName() + " played " + move1);
-            System.out.println(pokemon2.getName() + " played " + move2);
             //convert STRING move to BASEMOVE move
             baseMove1 = findMove(move1);
             baseMove2 = findMove(move2);
+            
+            System.out.println(pokemon1.getName() + " played " + baseMove1.getName());
+            System.out.println(pokemon2.getName() + " played " + baseMove2.getName());
             //figure who goes first
             figurePriority(pokemon1, baseMove1, pokemon2, baseMove2);
             if (pokemonOneFirst) {
