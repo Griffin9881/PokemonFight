@@ -12,7 +12,6 @@ public class Electroweb extends BaseMove implements Electric {
     
     private static final String NAME = "Electroweb";
     private static final int BASE_POWER = 55;
-    private static final int MAX_POWER = 70;
     private static final int POWER_POINT = 15;
     private static final double ACCURACY = 95.00;
     private static final int PRIORITY = 0;

@@ -1,7 +1,5 @@
 package com.griffin.pokemon.moves;
 
-import java.util.Random;
-
 import com.griffin.pokemon.Pokemon;
 
 public abstract class BaseMove {

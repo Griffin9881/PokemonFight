@@ -10,7 +10,6 @@ public class HeatWave extends BaseMove implements Fire {
     
     private static final String NAME = "Heat Wave";
     private static final int BASE_POWER = 95;
-    private static final int MAX_POWER = 120;
     private static final int POWER_POINT = 10;
     private static final double ACCURACY = 90.00;
     private static final Targets TARGET = Targets.ALL_OPPONENTS;

@@ -13,7 +13,6 @@ public class Spark extends BaseMove implements Electric {
     
     private static final String NAME = "Spark";
     private static final int BASE_POWER = 65;
-    private static final int MAX_POWER = 80;
     private static final int POWER_POINT = 20;
     private static final double ACCURACY = 100.00;
     private static final Targets TARGET = Targets.OPPONENT;
